@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives: 2014/12 | HTML5 API手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/archives/2014/12/page/2/">
+<meta property="og:site_name" content="HTML5 API手册">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
+
+  
+    <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HTML5 API手册</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-WebVTT" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/WebVTT/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Media/">Media</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/WebVTT/">WebVTT</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>WebVTT（网络视频文本轨道）是为了解决视频字幕问题而生，它是一种新的文件格式，后缀名为.vtt。<br>可以用于字幕（Subtitles）、标题（Captions）、说明（Descriptions）、章节（Chapters）、元数据（Metadata）。</p>
+<h3 id="语法">语法</h3>
+<p>（1）HTML引入</p>
+<p>WEBVTT文件通过<track>引入到<video>中，其包含几个属性：</video></p>
+<ul>
+<li><p>源WebVTT文件（src）</p>
+</li>
+<li><p>轨道的语言（srclang）</p>
+</li>
+<li><p>用户可读的标签（label）以及</p>
+</li>
+<li><p>是什么类型（kind）的轨道。类型属性的值来自于上面的列表（例如subtitles、captions等）。</p>
+</li>
+</ul>
+<p>代码例子：<br><img src="/img/webtt1.png" alt=""></p>
+<p>（2）WEBVTT文件写法</p>
+<p>WEBVTT文件都需要一个[声明头部]“WEBVTT FILE”，写在文件第一行。</p>
+<p>之后紧接着是[文件索引]，索引包括：ID，时间设置，位置设置，文字。</p>
+<p>每个索引之间用“空格”来分割。例如：</p>
+<figure class="highlight"><pre><div class="line"><span class="tag">-------------------------------------------------------------------</span></div><div class="line"><span class="tag">WEBVTT</span></div><div class="line"></div><div class="line">1  <span class="tag">A</span><span class="pseudo">:middle</span> <span class="tag">T</span><span class="pseudo">:50</span>%</div><div class="line"></div><div class="line">00<span class="pseudo">:00</span><span class="pseudo">:01</span><span class="class">.000</span> <span class="tag">--</span>&gt; 00<span class="pseudo">:00</span><span class="pseudo">:10</span><span class="class">.000</span></div><div class="line"></div><div class="line">这是文本的第一行，从第1秒显示到第10秒。</div><div class="line"></div><div class="line"></div><div class="line">2  <span class="tag">A</span><span class="pseudo">:end</span> <span class="tag">D</span><span class="pseudo">:vertical</span></div><div class="line"></div><div class="line">00<span class="pseudo">:00</span><span class="pseudo">:15</span><span class="class">.000</span> <span class="tag">--</span>&gt; 00<span class="pseudo">:00</span><span class="pseudo">:20</span><span class="class">.000</span></div><div class="line"></div><div class="line">这是文本的第二行</div><div class="line"></div><div class="line">被分割为两行</div><div class="line"><span class="tag">-------------------------------------------------------------------</span></div></pre></figure>
+
+<p>ID、时间设置、文本都很容易懂，至于位置信息是什么？</p>
+<p>它包括以下几样，跟时间设置位于同一行：</p>
+<p>[D:vertical / D:vertical-lr]</p>
+<p>垂直的显示文本而不是水平的。 它也指定文本是增长到左边（ vertical）还是右侧（ vertical-lr ）。</p>
+<p>[L:X / L:X%]</p>
+<p>一个数字或百分比。 如果是一个百分点，那么它指从框架顶部开始的位置。如果是一个数字，它表示会是在多少行。</p>
+<p>[ T:X%]</p>
+<p>视频上的水平文字位置。T:100% 表示文本会放在视频的右侧。</p>
+<p>[A:start / A:middle / A:end]</p>
+<p>文本在盒子内的对齐方式。start是左对齐， middle是居中对齐， end是右对齐。</p>
+<p>[S:X%]</p>
+<p>文本盒子的宽度，表示为视频宽度的百分比。</p>
+<h3 id="实例">实例</h3>
+<p><img src="/img/webtt2.png" alt=""><br><a href="http://10.213.135.120/h5api/webVTT/demo.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="webvtt"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/WebVTT/" data-id="fro8xmj2si0xv70p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/vibration/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Media/">Media</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
+<h3 id="语法">语法</h3>
+<ul>
+<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
+</li>
+<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
+</li>
+</ul>
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="vibration"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="ai6hvk6ik1ukbq6c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2014/12/">&laquo; Prev</a><a class="page-number" href="/archives/2014/12/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/13/README/">HTML5 API 手册帮助</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebRTC/">WebRTC</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebRTC/">WebRTC</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebRTC/">WebRTC</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/09/data-URIs/">data-uris</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 timezhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script src="/js/caniuse.min.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
