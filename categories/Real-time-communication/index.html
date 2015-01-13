@@ -94,10 +94,20 @@
         <h3 id="用途">用途</h3>
 <p>网页实时通信技术，WebRTC API实现了在网页浏览器上实时地语音对话或者视频。</p>
 <h3 id="使用">使用</h3>
-<p>浏览器通过</p>
-<figure class="highlight navigator.getUserMedia```请求设备的摄像头或者麦克风。主要使用的是三个API："><pre><div class="line"><span class="bullet">1. </span>MediaStream/ getUserMedia：获取媒体流  </div><div class="line"><span class="bullet">2. </span>RTCpeerConnection：peer2peer的媒体流数据传输  </div><div class="line"><span class="bullet">2. </span>RTCDataChannel：peer2peer普通数据的传输</div><div class="line"></div><div class="line"><span class="header">###语法  </span></div><div class="line">以下是使用WebRTC技术调用浏览器摄像头的代码：</div><div class="line">  </div><div class="line"><span class="xml"><span class="tag">&lt;<span class="title">hexoescape</span>&gt;</span></span>0<span class="xml"><span class="tag">&lt;/<span class="title">hexoescape</span>&gt;</span></span></div><div class="line"></div><div class="line"></div><div class="line">[<span class="link_label">查看DEMO</span>](<span class="link_url">http://simpl.info/getusermedia/</span>)</div><div class="line"></div><div class="line"><span class="header">###常见问题</span></div><div class="line"><span class="bullet">- </span>RTCDataChannel兼容情况不明，可以用[<span class="link_label">这个demo</span>](<span class="link_url">http://simpl.info/rtcdatachannel/</span>)测试。</div><div class="line"><span class="bullet">- </span>在不支持的浏览器中使用WebRTC有Polyfill可用：[<span class="link_label">getUserMedia.js</span>](<span class="link_url">https://github.com/addyosmani/getUserMedia.js</span>)。如果用户当前使用的浏览器支持WebRTC，那</div></pre></figure>
-
-<p>getUserMedia()```就会被调用；否则，使用Flash来完成交互。</p>
+<p>浏览器通过<strong>navigator.getUserMedia</strong>请求设备的摄像头或者麦克风。主要使用的是三个API：    </p>
+<ol>
+<li>MediaStream/ getUserMedia：获取媒体流  </li>
+<li>RTCpeerConnection：peer2peer的媒体流数据传输  </li>
+<li>RTCDataChannel：peer2peer普通数据的传输</li>
+</ol>
+<h3 id="语法">语法</h3>
+<p>以下是使用WebRTC技术调用浏览器摄像头的代码：<br>    <figure class="highlight"><pre><div class="line"><span class="pi">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 请求媒体</span></div><div class="line">navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;</div><div class="line"></div><div class="line"><span class="comment">// 此demo只调用了摄像头</span></div><div class="line"><span class="keyword">var</span> constraints = {audio: <span class="literal">false</span>, video: <span class="literal">true</span>};</div><div class="line"><span class="keyword">var</span> video = <span class="built_in">document</span>.querySelector(<span class="string">'video'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">successCallback</span><span class="params">(stream)</span> </span>{</div><div class="line">  <span class="built_in">window</span>.stream = stream; <span class="comment">// 获取可打印的媒体流</span></div><div class="line"></div><div class="line">  <span class="comment">// 摄像头捕捉到的媒体流用video标签展现</span></div><div class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.URL) {</div><div class="line">    video.src = <span class="built_in">window</span>.URL.createObjectURL(stream);</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    video.src = stream;</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">errorCallback</span><span class="params">(error)</span></span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'navigator.getUserMedia error: '</span>, error);</div><div class="line">}</div><div class="line"></div><div class="line">navigator.getUserMedia(constraints, successCallback, errorCallback);</div></pre></figure></p>
+<p><a href="http://simpl.info/getusermedia/" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li>RTCDataChannel兼容情况不明，可以用<a href="http://simpl.info/rtcdatachannel/" target="_blank" rel="external">这个demo</a>测试。</li>
+<li>在不支持的浏览器中使用WebRTC有Polyfill可用：<a href="https://github.com/addyosmani/getUserMedia.js" target="_blank" rel="external">getUserMedia.js</a>。如果用户当前使用的浏览器支持WebRTC，那<code>getUserMedia()</code>就会被调用；否则，使用Flash来完成交互。</li>
+</ul>
 <h3 id="兼容性">兼容性</h3>
 <div class="caniuse" data-feature="WebRTC"></div>
 
