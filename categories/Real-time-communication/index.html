@@ -93,16 +93,16 @@
       
         <h3 id="用途">用途</h3>
 <p>网页实时通信技术，WebRTC API实现了在网页浏览器上实时地语音对话或者视频。</p>
-<h3 id="使用">使用</h3>
+<h3 id="语法">语法</h3>
 <p>浏览器通过<strong>navigator.getUserMedia</strong>请求设备的摄像头或者麦克风。主要使用的是三个API：    </p>
 <ol>
 <li>MediaStream/ getUserMedia：获取媒体流  </li>
 <li>RTCpeerConnection：peer2peer的媒体流数据传输  </li>
 <li>RTCDataChannel：peer2peer普通数据的传输</li>
 </ol>
-<h3 id="语法">语法</h3>
+<h3 id="实例">实例</h3>
 <p>以下是使用WebRTC技术调用浏览器摄像头的代码：<br>    <figure class="highlight"><pre><div class="line"><span class="pi">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 请求媒体</span></div><div class="line">navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;</div><div class="line"></div><div class="line"><span class="comment">// 此demo只调用了摄像头</span></div><div class="line"><span class="keyword">var</span> constraints = {audio: <span class="literal">false</span>, video: <span class="literal">true</span>};</div><div class="line"><span class="keyword">var</span> video = <span class="built_in">document</span>.querySelector(<span class="string">'video'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">successCallback</span><span class="params">(stream)</span> </span>{</div><div class="line">  <span class="built_in">window</span>.stream = stream; <span class="comment">// 获取可打印的媒体流</span></div><div class="line"></div><div class="line">  <span class="comment">// 摄像头捕捉到的媒体流用video标签展现</span></div><div class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.URL) {</div><div class="line">    video.src = <span class="built_in">window</span>.URL.createObjectURL(stream);</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    video.src = stream;</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">errorCallback</span><span class="params">(error)</span></span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'navigator.getUserMedia error: '</span>, error);</div><div class="line">}</div><div class="line"></div><div class="line">navigator.getUserMedia(constraints, successCallback, errorCallback);</div></pre></figure></p>
-<p><a href="http://simpl.info/getusermedia/" target="_blank" rel="external">查看DEMO</a></p>
+<p>如果有摄像头，就戳-&gt;<a href="http://simpl.info/getusermedia/" target="_blank" rel="external">DEMO</a></p>
 <h3 id="常见问题">常见问题</h3>
 <ul>
 <li>RTCDataChannel兼容情况不明，可以用<a href="http://simpl.info/rtcdatachannel/" target="_blank" rel="external">这个demo</a>测试。</li>
