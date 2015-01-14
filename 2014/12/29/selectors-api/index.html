@@ -82,7 +82,7 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
   </div>
 
   </div>
@@ -107,22 +107,22 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
 <h3 id="语法">语法</h3>
 <figure class="highlight"><pre><div class="line"><span class="comment">// querySelector 用法 默认返回找到的第一个元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelector(selectors);</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 用法 默认返回一组元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelectorAll(selectors);</div></pre></figure>
 
-<p>selectors 支持 CSS选择器写法，如：demo &gt; div, ……</p>
+<p>selectors 支持 CSS 选择器写法。</p>
 <h3 id="实例">实例</h3>
 <p>HTML</p>
-<figure class="highlight"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"btns"</span>&gt;</div><div class="line">&lt;button <span class="type">class</span>=<span class="string">"btn"</span> <span class="property">id</span>=<span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;</div><div class="line">&lt;button <span class="type">class</span>=<span class="string">"btn"</span> <span class="property">id</span>=<span class="string">"btn-2"</span>&gt;btn2&lt;/button&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div><div class="line">……</div></pre></figure>
+<figure class="highlight"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"show-demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"btns"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-1"</span>&gt;</span>querySelect<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-2"</span>&gt;</span>querySelectAll<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-3"</span>&gt;</span>清除选中状态<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"tips"</span>&gt;</span>请点击上面的按钮改变选中的状态...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"list"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></figure>
 
 <p>JavaScript</p>
-<figure class="highlight"><pre><div class="line">var $<span class="variable">btn =</span> document.querySelector('.btn'); // 返回 &lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;</div><div class="line">var $<span class="variable">btnAll =</span> document.querySelectorAll('.btn'); // 返回 [&lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;, &lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-2"</span>&gt;btn2&lt;/button&gt;]</div></pre></figure>
+<figure class="highlight"><pre><div class="line">……</div><div class="line"><span class="keyword">var</span> $li = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);;</div><div class="line">……</div><div class="line"><span class="keyword">var</span> $allLi = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</div><div class="line">……</div></pre></figure>
 
-<p><a href="demo url">查看DEMO</a></p>
+<p><a href="http://m.isux.us/touch_proj/h5api/selectors-api.html" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="query"></div>
+<div class="caniuse" data-feature="querySelector"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="0j3i5erz7ahocbx5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="uks418oung8470tm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,19 +131,19 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
     
 <nav id="article-nav">
   
-    <a href="/2014/12/29/dataset/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/12/29/pointer-events/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          dataset
+          Pointer Events
         
       </div>
     </a>
   
   
-    <a href="/2014/12/29/WebVTT/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/12/29/media-fragments/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">WebVTT</div>
+      <div class="article-nav-title">Media Fragments</div>
     </a>
   
 </nav>
@@ -159,7 +159,7 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -172,7 +172,7 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -184,6 +184,14 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
       <ul>
         
           <li>
+            <a href="/2015/01/13/WebSocketAPI/">WebSocketAPI</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebSocket-protocol/">WebSocket-protocol</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/13/README/">HTML5 API 手册帮助</a>
           </li>
         
@@ -193,14 +201,6 @@ querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元
         
           <li>
             <a href="/2015/01/09/data-URIs/">data-uris</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/29/web-notifications/">Web Notifications API</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/29/vibration/">vibration</a>
           </li>
         
       </ul>

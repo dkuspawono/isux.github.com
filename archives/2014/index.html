@@ -131,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/web-notifications/" data-id="fokmkwlyzenf1omm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/web-notifications/" data-id="yl6cj91fkhl04wz7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,9 +141,9 @@
 
 
   
-    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-media-source-extensions" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/vibration/" class="article-date">
+    <a href="/2014/12/29/media-source-extensions/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
+      <a class="article-title" href="/2014/12/29/media-source-extensions/">Media Source Extensions</a>
     </h1>
   
 
@@ -168,23 +168,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
+<p>功能允许通过 Javascript 来产生 浏览器视频媒体播放的流。</p>
 <h3 id="语法">语法</h3>
-<ul>
-<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
-</li>
-<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
-</li>
-</ul>
+<p>性能</p>
+<figure class="highlight"><pre><div class="line">MediaSource<span class="built_in">.</span>sourceBuffers</div><div class="line">MediaSource<span class="built_in">.</span>addSourceBuffer()</div><div class="line">MediaSource<span class="built_in">.</span>readyState</div><div class="line">MediaSource<span class="built_in">.</span><span class="built_in">duration</span></div><div class="line"></div><div class="line"><span class="comment">// 添加缓冲源</span></div><div class="line">MediaSource<span class="built_in">.</span>activeSourceBuffers</div><div class="line"></div><div class="line"><span class="comment">//移除</span></div><div class="line">MediaSource<span class="built_in">.</span>removeSourceBuffer()</div><div class="line"></div><div class="line"><span class="comment">//结束</span></div><div class="line">MediaSource<span class="built_in">.</span>endOfStream()</div></pre></figure>
+
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line">var ms = new MediaSource();</div><div class="line"></div><div class="line">var video = document.querySelector(<span class="string">'video'</span>);</div><div class="line">video.src = window.URL.createObjectURL(ms);</div><div class="line"></div><div class="line">ms.addEventListener(<span class="string">'sourceopen'</span>, <span class="keyword">function</span>(e) {</div><div class="line">  <span class="keyword">...</span></div><div class="line">  var sourceBuffer = ms.addSourceBuffer(<span class="string">'video/webm; codecs="vorbis,vp8"'</span>);</div><div class="line">  sourceBuffer.appendBuffer(oneVideoWebMChunk);</div><div class="line">  ....</div><div class="line">}, false);</div></pre></figure><br><a href="http://html5-demos.appspot.com/static/media-source.html" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="vibration"></div>
+<p><img src="/img/Media-Source-Extensions-1.png" alt=""><br><img src="/img/Media-Source-Extensions-2.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="enbdg126cva62itm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/media-source-extensions/" data-id="561snqyy49qiqsjw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="l8azelxvylc0ekne" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="ezn6gra1hd00jubu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,9 +246,66 @@
 
 
   
-    <article id="post-media-source-extensions" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-selectors-api" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/media-source-extensions/" class="article-date">
+    <a href="/2014/12/29/selectors-api/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/selectors-api/">Selectors API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>querySelector 返回当前文档中第一个匹配特定选择器的元素。</p>
+<p>querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元素。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="comment">// querySelector 用法 默认返回找到的第一个元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelector(selectors);</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 用法 默认返回一组元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelectorAll(selectors);</div></pre></figure>
+
+<p>selectors 支持 CSS 选择器写法。</p>
+<h3 id="实例">实例</h3>
+<p>HTML</p>
+<figure class="highlight"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"show-demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"btns"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-1"</span>&gt;</span>querySelect<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-2"</span>&gt;</span>querySelectAll<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-3"</span>&gt;</span>清除选中状态<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"tips"</span>&gt;</span>请点击上面的按钮改变选中的状态...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"list"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></figure>
+
+<p>JavaScript</p>
+<figure class="highlight"><pre><div class="line">……</div><div class="line"><span class="keyword">var</span> $li = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);;</div><div class="line">……</div><div class="line"><span class="keyword">var</span> $allLi = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</div><div class="line">……</div></pre></figure>
+
+<p><a href="http://m.isux.us/touch_proj/h5api/selectors-api.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="querySelector"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="uks418oung8470tm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-media-fragments" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/media-fragments/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
@@ -267,7 +321,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/media-source-extensions/">Media Source Extensions</a>
+      <a class="article-title" href="/2014/12/29/media-fragments/">Media Fragments</a>
     </h1>
   
 
@@ -276,75 +330,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>功能允许通过 Javascript 来产生 浏览器视频媒体播放的流。</p>
+<p>Media Fragments让视频、音频等媒体有了可以展示区块（fragments）的功能。这里的裁剪可以是时间的裁剪，也可以是视窗大小的裁剪。</p>
 <h3 id="语法">语法</h3>
-<p>性能</p>
-<figure class="highlight"><pre><div class="line">MediaSource<span class="built_in">.</span>sourceBuffers</div><div class="line">MediaSource<span class="built_in">.</span>addSourceBuffer()</div><div class="line">MediaSource<span class="built_in">.</span>readyState</div><div class="line">MediaSource<span class="built_in">.</span><span class="built_in">duration</span></div><div class="line"></div><div class="line"><span class="comment">// 添加缓冲源</span></div><div class="line">MediaSource<span class="built_in">.</span>activeSourceBuffers</div><div class="line"></div><div class="line"><span class="comment">//移除</span></div><div class="line">MediaSource<span class="built_in">.</span>removeSourceBuffer()</div><div class="line"></div><div class="line"><span class="comment">//结束</span></div><div class="line">MediaSource<span class="built_in">.</span>endOfStream()</div></pre></figure>
+<p>如下，只需要在视频源末尾加上”#”或者”?”，之后加上相应参数，就可以实现裁剪展示功能。<br>以下例子，表示只自动播放视频5-10s。</p>
+<figure class="highlight"><pre><div class="line"><span class="symbol">http:</span>/<span class="regexp">/xxx/video</span>.mp4<span class="comment">#t=5,10</span></div></pre></figure><br>其他属性：<br>1. t=a,b; 表示a到b之间的时间。若只有a，则表示从a开始播到最后，若只有b，则表示从视频开头到时间b。<br><br>2. xywh=160,120,320,240; 表示起始坐标(x,y)，宽度高度(w,h），会截取屏幕的某个区域作为视窗展示视频。也可以定义单位，例如：<br>xywh=pixel:160,120,320,240;（像素）<br>xywh=percent:25,25,50,50;（百分比）<br><br>3. track=’ogg_1’，表示视频轨道、track=’ogg_2’，表示音频轨道。<br><br>4. id=’aaaa’，表示如果文件定义了fragments（区块）的话可以使用他们的对应id值。<br><br>注：多个属性只能用?分隔，值之间用&amp;连接，如：<br><figure class="highlight"><pre><div class="line">http://xxx/video.ogv?<span class="variable">t=</span><span class="number">2</span>,<span class="number">9</span>&amp;<span class="variable">track=</span>’ogg_1′</div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">var ms = new MediaSource();</div><div class="line"></div><div class="line">var video = document.querySelector(<span class="string">'video'</span>);</div><div class="line">video.src = window.URL.createObjectURL(ms);</div><div class="line"></div><div class="line">ms.addEventListener(<span class="string">'sourceopen'</span>, <span class="keyword">function</span>(e) {</div><div class="line">  <span class="keyword">...</span></div><div class="line">  var sourceBuffer = ms.addSourceBuffer(<span class="string">'video/webm; codecs="vorbis,vp8"'</span>);</div><div class="line">  sourceBuffer.appendBuffer(oneVideoWebMChunk);</div><div class="line">  ....</div><div class="line">}, false);</div></pre></figure><br><a href="http://html5-demos.appspot.com/static/media-source.html" target="_blank" rel="external">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line">code</div></pre></figure><br><a href="https://simpl.info/mediafragments/" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<p><img src="/img/Media-Source-Extensions-1.png" alt=""><br><img src="/img/Media-Source-Extensions-2.png" alt=""></p>
+<p>该属性大部分浏览器还没有完整支持，但有polyfill可以实现这个效果<a href="https://github.com/tomayac/Media-Fragments-URI/" target="_blank" rel="external">mediafragments.js</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/media-source-extensions/" data-id="wzfl7hmz4222yc3g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-contentEditable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/29/contentEditable/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/contentEditable/">contentEditable</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>contentEditable 属性用来表明一个元素是否处于可编辑的状态</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">&lt;element contentEditable=<span class="string">"value"</span>&gt;这是内容内容<span class="keyword">...</span>&lt;/element&gt;</div></pre></figure>
-
-<p>value 的值为：</p>
-<ul>
-<li>true 表示该元素可编辑.</li>
-<li>false 表示元素不可编辑.</li>
-<li>inherit 表示该元素继承了其父元素的可编辑状态.</li>
-</ul>
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">&lt;div id=<span class="string">"demo-1"</span> class=<span class="string">"demo"</span> contentEditable=<span class="string">"true"</span>&gt;</div><div class="line">&lt;h2&gt;hi~, Tony..!&lt;/h2&gt;</div><div class="line">&lt;p&gt;点击编辑文本<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></figure><br><a href="http://m.isux.us/touch_proj/h5api/contenteditable.html" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="contentEditable"></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/contentEditable/" data-id="rs52c44wwtebtv7t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/media-fragments/" data-id="gg76xlqojj4knxo0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/html-imports/" data-id="r8qq3a7r9x97gedr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/html-imports/" data-id="66wvqdykbwkisutu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -477,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/device-orientation/" data-id="ukneblp111vlhdt2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/device-orientation/" data-id="nm1wm5bgpo9ue0ax" class="article-share-link">Share</a>
       
       
     </footer>
@@ -526,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="9iidqisss0t5892v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="9jps3xcv48xyjn5q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -576,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/dataset/" data-id="xnhew55lzrx7a6fv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/dataset/" data-id="mg8hid6y2812szxy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,14 +585,14 @@
 
 
   
-    <article id="post-selectors-api" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-contentEditable" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/selectors-api/" class="article-date">
+    <a href="/2014/12/29/contentEditable/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+    <a class="article-category-link" href="/categories/Service-Workers/">Service Workers</a>
   </div>
 
   </div>
@@ -604,7 +603,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/selectors-api/">Selectors API</a>
+      <a class="article-title" href="/2014/12/29/contentEditable/">contentEditable</a>
     </h1>
   
 
@@ -613,27 +612,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>querySelector 返回当前文档中第一个匹配特定选择器的元素。</p>
-<p>querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元素。</p>
+<p>contentEditable 属性用来表明一个元素是否处于可编辑的状态</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">// querySelector 用法 默认返回找到的第一个元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelector(selectors);</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 用法 默认返回一组元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelectorAll(selectors);</div></pre></figure>
+<figure class="highlight"><pre><div class="line">&lt;element contentEditable=<span class="string">"value"</span>&gt;这是内容内容<span class="keyword">...</span>&lt;/element&gt;</div></pre></figure>
 
-<p>selectors 支持 CSS选择器写法，如：demo &gt; div, ……</p>
+<p>value 的值为：</p>
+<ul>
+<li>true 表示该元素可编辑.</li>
+<li>false 表示元素不可编辑.</li>
+<li>inherit 表示该元素继承了其父元素的可编辑状态.</li>
+</ul>
 <h3 id="实例">实例</h3>
-<p>HTML</p>
-<figure class="highlight"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"btns"</span>&gt;</div><div class="line">&lt;button <span class="type">class</span>=<span class="string">"btn"</span> <span class="property">id</span>=<span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;</div><div class="line">&lt;button <span class="type">class</span>=<span class="string">"btn"</span> <span class="property">id</span>=<span class="string">"btn-2"</span>&gt;btn2&lt;/button&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div><div class="line">……</div></pre></figure>
-
-<p>JavaScript</p>
-<figure class="highlight"><pre><div class="line">var $<span class="variable">btn =</span> document.querySelector('.btn'); // 返回 &lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;</div><div class="line">var $<span class="variable">btnAll =</span> document.querySelectorAll('.btn'); // 返回 [&lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-1"</span>&gt;btn1&lt;/button&gt;, &lt;button <span class="variable">class=</span><span class="string">"btn"</span> <span class="variable">id=</span><span class="string">"btn-2"</span>&gt;btn2&lt;/button&gt;]</div></pre></figure>
-
-<p><a href="demo url">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line">&lt;div id=<span class="string">"demo-1"</span> class=<span class="string">"demo"</span> contentEditable=<span class="string">"true"</span>&gt;</div><div class="line">  &lt;h2&gt;contentEditable&lt;/h2&gt;</div><div class="line">  &lt;p&gt;默认是不可以编辑状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">  &lt;p&gt;请点击上面的按钮改变状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></figure><br><a href="http://m.isux.us/touch_proj/h5api/contenteditable.html" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="query"></div>
+<div class="caniuse" data-feature="contentEditable"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="0j3i5erz7ahocbx5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/contentEditable/" data-id="alxwgat7bp1u4yt5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -656,7 +653,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -669,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -681,6 +678,14 @@
       <ul>
         
           <li>
+            <a href="/2015/01/13/WebSocketAPI/">WebSocketAPI</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebSocket-protocol/">WebSocket-protocol</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/13/README/">HTML5 API 手册帮助</a>
           </li>
         
@@ -690,14 +695,6 @@
         
           <li>
             <a href="/2015/01/09/data-URIs/">data-uris</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/29/web-notifications/">Web Notifications API</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/29/vibration/">vibration</a>
           </li>
         
       </ul>

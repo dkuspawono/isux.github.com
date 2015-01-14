@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: Web Components | HTML5 API手册</title>
+  <title>Category: Service Workers | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HTML5 API手册">
-<meta property="og:url" content="http://yoursite.com/categories/Web-Components/">
+<meta property="og:url" content="http://yoursite.com/categories/Service-Workers/">
 <meta property="og:site_name" content="HTML5 API手册">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -65,14 +65,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-html-imports" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-contentEditable" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/html-imports/" class="article-date">
+    <a href="/2014/12/29/contentEditable/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Web-Components/">Web Components</a>
+    <a class="article-category-link" href="/categories/Service-Workers/">Service Workers</a>
   </div>
 
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/html-imports/">HTML Imports</a>
+      <a class="article-title" href="/2014/12/29/contentEditable/">contentEditable</a>
     </h1>
   
 
@@ -92,35 +92,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>HTML Imports是一种在其他HTML文档中引入和复用HTML文档的方法，目前是W3C的一个草案。</p>
+<p>contentEditable 属性用来表明一个元素是否处于可编辑的状态</p>
 <h3 id="语法">语法</h3>
-<ol>
-<li>导入文档<br>为了能在HTML中声明imports，增加了一个新的link类型：<figure class="highlight"><pre><div class="line">&lt;link <span class="variable">rel=</span><span class="string">"import"</span> <span class="variable">href=</span><span class="string">"xxx/xxx.html"</span>&gt;</div></pre></figure>
+<figure class="highlight"><pre><div class="line">&lt;element contentEditable=<span class="string">"value"</span>&gt;这是内容内容<span class="keyword">...</span>&lt;/element&gt;</div></pre></figure>
 
-</li>
-</ol>
-<p>需要注意的是：</p>
+<p>value 的值为：</p>
 <ul>
-<li>import关键字给资源指定的默认类型是text/html</li>
-<li>link元素有一个async属性，它是布尔属性。当设置为async时，导入的资源异步加载</li>
-<li>导入内容的获取和应用不会受media属性影响</li>
+<li>true 表示该元素可编辑.</li>
+<li>false 表示元素不可编辑.</li>
+<li>inherit 表示该元素继承了其父元素的可编辑状态.</li>
 </ul>
-<ol>
-<li>访问导入的文档<br>HTML5为HTML Imports提供了新的接口，以访问导入的文档：<figure class="highlight"><pre><div class="line">&lt;link <span class="variable">rel=</span><span class="string">"import"</span> <span class="variable">href=</span><span class="string">"/imports/heart.html"</span>&gt;</div></pre></figure>
-
-</li>
-</ol>
-<p>要想访问这个导入的文件“/imports/heart.html”，可如下操作：</p>
-<figure class="highlight"><pre><div class="line"><span class="built_in">var</span> <span class="keyword">link</span> <span class="subst">=</span> document<span class="built_in">.</span>querySelector(<span class="string">'link[rel=import]'</span>); </div><div class="line"><span class="built_in">var</span> heart <span class="subst">=</span> <span class="keyword">link</span><span class="built_in">.</span><span class="keyword">import</span>; </div><div class="line"><span class="comment">// 访问"/imports/heart.html"文档中的DOM</span></div><div class="line"><span class="built_in">var</span> pulse <span class="subst">=</span> heart<span class="built_in">.</span>querySelector(<span class="string">'div.pulse'</span>);</div></pre></figure>
-
-<h3 id="常见问题">常见问题</h3>
-<p>在HTML解析或XML解析的Document上下文中的import被称为“阻塞脚本导入”。如果此元素是Document的解析器创建的，或者这个元素是一个import类型的link，而且此link没有被标记为异步，同时此导入已经完全下载，且事件循环的最后事件已经到达步骤1，且元素在Document中，且用户代理尚未放弃此导入。用户代理可以随时放弃一个导入。</p>
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line">&lt;div id=<span class="string">"demo-1"</span> class=<span class="string">"demo"</span> contentEditable=<span class="string">"true"</span>&gt;</div><div class="line">  &lt;h2&gt;contentEditable&lt;/h2&gt;</div><div class="line">  &lt;p&gt;默认是不可以编辑状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">  &lt;p&gt;请点击上面的按钮改变状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></figure><br><a href="http://m.isux.us/touch_proj/h5api/contenteditable.html" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="contentEditable"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/html-imports/" data-id="66wvqdykbwkisutu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/contentEditable/" data-id="alxwgat7bp1u4yt5" class="article-share-link">Share</a>
       
       
     </footer>
