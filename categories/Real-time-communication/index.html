@@ -65,6 +65,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-server-sent-event" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/14/server-sent-event/" class="article-date">
+  <time datetime="2015-01-14T03:28:44.000Z" itemprop="datePublished">Jan 14 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Real-time-communication/">Real-time communication</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/14/server-sent-event/">server-sent-event</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>服务器推送事件——从服务端实时推送数据到浏览器端</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="comment">//生成EventSource对象用于接收服务器发送事件通知</span></div><div class="line"><span class="keyword">var</span> source=<span class="keyword">new</span> EventSource(<span class="string">"demo_sse.php"</span>);</div><div class="line"></div><div class="line"><span class="comment">//EventSource对象事件</span></div><div class="line">source.onmessage=<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{};  <span class="comment">//当接收到消息</span></div><div class="line"></div><div class="line">source.onopen=<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{};  <span class="comment">//当通往服务器的链接被打开</span></div><div class="line"></div><div class="line">source.onerror=<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{};  <span class="comment">//当发生错误</span></div><div class="line"></div><div class="line"><span class="comment">//检测浏览器是否支持该属性</span></div><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(EventSource)!==<span class="string">"undefined"</span>){</div><div class="line">  <span class="comment">// Yes! Server-sent events support!</span></div><div class="line">  <span class="comment">// Some code.....</span></div><div class="line">}</div><div class="line"><span class="keyword">else</span>{</div><div class="line">  <span class="comment">// Sorry! No server-sent events support..</span></div><div class="line">}</div></pre></figure>
+
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_sse" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<p>1，IE暂时不支持该属性<br>2，该属性基于HTTP协议</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="title"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/14/server-sent-event/" data-id="fjlvjfecvci49lgb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-WebSocketAPI" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/01/13/WebSocketAPI/" class="article-date">
@@ -168,7 +217,7 @@
 <h3 id="实例">实例</h3>
 <p><a href="http://www.websocket.org/echo.html" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="常见问题">常见问题</h3>
-<p>WebSocket 作为一个正在演变中的 Web 规范还存在一些风险。首先，WebSocket 规范目前还处于草案阶段，也就是它的规范和 API 还是有变动的可能，另外的一个风险就是微软的 IE 作为占市场份额最大的浏览器，和其他的主流浏览器相比，对 HTML5 的支持是比较差的，这是我们在构建企业级的 Web 应用的时候必须要考虑的一个问题。</p>
+<p>1，WebSocket使用套接字连接，基于TCP协议；<br>2，WebSocket 作为一个正在演变中的 Web 规范还存在一些风险。首先，WebSocket 规范目前还处于草案阶段，也就是它的规范和 API 还是有变动的可能，另外的一个风险就是微软的 IE 作为占市场份额最大的浏览器，和其他的主流浏览器相比，对 HTML5 的支持是比较差的，这是我们在构建企业级的 Web 应用的时候必须要考虑的一个问题。</p>
 <h3 id="兼容性">兼容性</h3>
 <div class="caniuse" data-feature="title"></div>
       
@@ -231,7 +280,7 @@
 <li>在低版本的FF中，需要到<strong>about:config</strong>中开启<strong>media.navigator.enabled</strong>。 </li>
 </ul>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="WebRTC"></div>
+<div class="caniuse" data-feature="webrtc"></div>
 
 <h3 id="参考资料">参考资料</h3>
 <ol>
@@ -262,7 +311,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -275,7 +324,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -287,6 +336,14 @@
       <ul>
         
           <li>
+            <a href="/2015/01/14/Web-Workers/">Web Workers</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/14/server-sent-event/">server-sent-event</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/13/WebSocketAPI/">WebSocketAPI</a>
           </li>
         
@@ -296,14 +353,6 @@
         
           <li>
             <a href="/2015/01/13/README/">HTML5 API 手册帮助</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/13/WebRTC/">WebRTC</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/09/data-URIs/">data-uris</a>
           </li>
         
       </ul>

@@ -3,35 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hashchange | HTML5 API手册</title>
+  <title>Category: Performance optimization and analysis | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途
-hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.
-语法
-code
-
-实例
-(function(window) {  // 如果浏览器原生支持该事件,则退出  if ( 'onhashchange' in window.document.body ) { return; }  var location = window.locat">
-<meta property="og:type" content="article">
-<meta property="og:title" content="hashchange">
-<meta property="og:url" content="http://yoursite.com/2014/12/29/hashchange/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/categories/Performance-optimization-and-analysis/">
 <meta property="og:site_name" content="HTML5 API手册">
-<meta property="og:description" content="用途
-hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.
-语法
-code
-
-实例
-(function(window) {  // 如果浏览器原生支持该事件,则退出  if ( 'onhashchange' in window.document.body ) { return; }  var location = window.locat">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hashchange">
-<meta name="twitter:description" content="用途
-hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.
-语法
-code
-
-实例
-(function(window) {  // 如果浏览器原生支持该事件,则退出  if ( 'onhashchange' in window.document.body ) { return; }  var location = window.locat">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -81,14 +63,16 @@ code
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hashchange" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Web-Workers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/hashchange/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+    <a href="/2015/01/14/Web-Workers/" class="article-date">
+  <time datetime="2015-01-14T07:41:11.000Z" itemprop="datePublished">Jan 14 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
+    <a class="article-category-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a>
   </div>
 
   </div>
@@ -98,8 +82,8 @@ code
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      hashchange
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/14/Web-Workers/">Web Workers</a>
     </h1>
   
 
@@ -108,47 +92,30 @@ code
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.</p>
+<p>HTML5提供的一个javascript多线程解决方案，我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面。</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">code</div></pre></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">//web主线程</span></div><div class="line"><span class="keyword">var</span> woker = <span class="keyword">new</span> Worker(url);  <span class="comment">//创建worker对象</span></div><div class="line"></div><div class="line">worker.postMessage(data);  <span class="comment">//向worker发送数据</span></div><div class="line"></div><div class="line">worker.onmessage = <span class="function"><span class="keyword">function</span><span class="params">(evt)</span></span>{};  <span class="comment">//输出worker发送的数据</span></div><div class="line"></div><div class="line">worker.terminate()  <span class="comment">//终止一个worker线程</span></div><div class="line"></div><div class="line"><span class="comment">//worker新线程</span></div><div class="line">postMessage(data);  <span class="comment">//向web主线程发送数据</span></div><div class="line"></div><div class="line">onmessage = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{}  <span class="comment">//接收web主线程发送的数据</span></div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">(window)</span> </span>{</div><div class="line"></div><div class="line">  <span class="comment">// 如果浏览器原生支持该事件,则退出  </span></div><div class="line"><span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) { <span class="keyword">return</span>; }</div><div class="line"></div><div class="line">  <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</div><div class="line">    oldURL = location.href,</div><div class="line">    oldHash = location.hash;</div><div class="line"></div><div class="line">  <span class="comment">// 每隔100ms检测一下location.hash是否发生变化</span></div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> newURL = location.href,</div><div class="line">      newHash = location.hash;</div><div class="line"></div><div class="line">    <span class="comment">// 如果hash发生了变化,且绑定了处理函数...</span></div><div class="line">    <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span> ) {</div><div class="line">      <span class="comment">// execute the handler</span></div><div class="line">      <span class="built_in">window</span>.onhashchange({</div><div class="line">        type: <span class="string">"hashchange"</span>,</div><div class="line">        oldURL: oldURL,</div><div class="line">        newURL: newURL</div><div class="line">      });</div><div class="line"></div><div class="line">      oldURL = newURL;</div><div class="line">      oldHash = newHash;</div><div class="line">    }</div><div class="line">  }, <span class="number">100</span>);</div><div class="line"></div><div class="line">})(<span class="built_in">window</span>);</div></pre></figure><br><a href="http://html5demos.com/dataset" target="_blank" rel="external">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line"><span class="comment">//支线程demo_workers.js</span></div><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timedCount</span><span class="params">()</span></span>{</div><div class="line">	i=i+<span class="number">1</span>;</div><div class="line">	postMessage(i);</div><div class="line">	setTimeout(<span class="string">"timedCount()"</span>,<span class="number">500</span>);</div><div class="line">}</div><div class="line"></div><div class="line">timedCount();</div><div class="line"></div><div class="line"><span class="comment">//主线程js</span></div><div class="line"><span class="keyword">var</span> w;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startWorker</span><span class="params">()</span></span>{</div><div class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span>(Worker)!==<span class="string">"undefined"</span>){</div><div class="line"></div><div class="line">  		<span class="keyword">if</span>(<span class="keyword">typeof</span>(w)==<span class="string">"undefined"</span>){</div><div class="line">			w=<span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</div><div class="line">		}</div><div class="line"></div><div class="line">  		w.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">    		<span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML=event.data;</div><div class="line">  		};</div><div class="line">	}</div><div class="line">	<span class="keyword">else</span>{</div><div class="line">		<span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML=<span class="string">"Sorry, your browser does not support Web Workers..."</span>;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopWorker</span><span class="params">()</span></span>{</div><div class="line">	w.terminate();</div><div class="line">}</div></pre></figure><br><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_webworker" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<p>1，不能跨域加载JS<br>2，worker内代码不能访问DOM</p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="hashchange"></div>
-
+<div class="caniuse" data-feature="title"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="9jps3xcv48xyjn5q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/14/Web-Workers/" data-id="5f2sdk2vd1iuzv4e" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/12/29/device-orientation/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Device Orientation API
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/12/29/dataset/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">dataset</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
 </section>
         
           <aside id="sidebar">

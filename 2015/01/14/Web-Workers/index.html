@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Pointer Events | HTML5 API手册</title>
+  <title>Web Workers | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="用途
-Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。
+HTML5提供的一个javascript多线程解决方案，我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面。
 语法
-//请求指针锁定requestPointerLock();//退出指针锁定exitPointerLock();//指针锁定解除时触发pointerlockchange();//">
+//web主线程var woker = new Worker(url);  //创建worker对象worker.postMessage(data);  //向worker发送数据worker.onmessage = function(evt){};  /">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pointer Events">
-<meta property="og:url" content="http://yoursite.com/2014/12/29/pointer-events/">
+<meta property="og:title" content="Web Workers">
+<meta property="og:url" content="http://yoursite.com/2015/01/14/Web-Workers/">
 <meta property="og:site_name" content="HTML5 API手册">
 <meta property="og:description" content="用途
-Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。
+HTML5提供的一个javascript多线程解决方案，我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面。
 语法
-//请求指针锁定requestPointerLock();//退出指针锁定exitPointerLock();//指针锁定解除时触发pointerlockchange();//">
+//web主线程var woker = new Worker(url);  //创建worker对象worker.postMessage(data);  //向worker发送数据worker.onmessage = function(evt){};  /">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pointer Events">
+<meta name="twitter:title" content="Web Workers">
 <meta name="twitter:description" content="用途
-Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。
+HTML5提供的一个javascript多线程解决方案，我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面。
 语法
-//请求指针锁定requestPointerLock();//退出指针锁定exitPointerLock();//指针锁定解除时触发pointerlockchange();//">
+//web主线程var woker = new Worker(url);  //创建worker对象worker.postMessage(data);  //向worker发送数据worker.onmessage = function(evt){};  /">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -72,14 +72,14 @@ Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-pointer-events" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Web-Workers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/pointer-events/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+    <a href="/2015/01/14/Web-Workers/" class="article-date">
+  <time datetime="2015-01-14T07:41:11.000Z" itemprop="datePublished">Jan 14 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+    <a class="article-category-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@ Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标�
         
   
     <h1 class="article-title" itemprop="name">
-      Pointer Events
+      Web Workers
     </h1>
   
 
@@ -99,25 +99,20 @@ Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标�
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。</p>
+<p>HTML5提供的一个javascript多线程解决方案，我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面。</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//请求指针锁定</span></div><div class="line"><span class="function">requestPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//退出指针锁定</span></div><div class="line"><span class="function">exitPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定解除时触发</span></div><div class="line"><span class="function">pointerlockchange</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定出错时触发;</span></div><div class="line"><span class="function">pointerlockerror</span>();</div></pre></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">//web主线程</span></div><div class="line"><span class="keyword">var</span> woker = <span class="keyword">new</span> Worker(url);  <span class="comment">//创建worker对象</span></div><div class="line"></div><div class="line">worker.postMessage(data);  <span class="comment">//向worker发送数据</span></div><div class="line"></div><div class="line">worker.onmessage = <span class="function"><span class="keyword">function</span><span class="params">(evt)</span></span>{};  <span class="comment">//输出worker发送的数据</span></div><div class="line"></div><div class="line">worker.terminate()  <span class="comment">//终止一个worker线程</span></div><div class="line"></div><div class="line"><span class="comment">//worker新线程</span></div><div class="line">postMessage(data);  <span class="comment">//向web主线程发送数据</span></div><div class="line"></div><div class="line">onmessage = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{}  <span class="comment">//接收web主线程发送的数据</span></div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<figure class="highlight"><pre><div class="line">elem.requestPointerLock = elem.requestPointerLock    ||</div><div class="line">                              elem.mozRequestPointerLock ||</div><div class="line">                              elem.webkitRequestPointerLock;</div><div class="line">elem.requestPointerLock();</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pointerLockError</span><span class="params">()</span> </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"锁定指针时出错。"</span>);</div><div class="line">}</div></pre></figure>
-
-<p><a href="http://m.isux.us/touch_proj/h5api/Pointer-Events.html" target="_blank" rel="external">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line"><span class="comment">//支线程demo_workers.js</span></div><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timedCount</span><span class="params">()</span></span>{</div><div class="line">	i=i+<span class="number">1</span>;</div><div class="line">	postMessage(i);</div><div class="line">	setTimeout(<span class="string">"timedCount()"</span>,<span class="number">500</span>);</div><div class="line">}</div><div class="line"></div><div class="line">timedCount();</div><div class="line"></div><div class="line"><span class="comment">//主线程js</span></div><div class="line"><span class="keyword">var</span> w;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startWorker</span><span class="params">()</span></span>{</div><div class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span>(Worker)!==<span class="string">"undefined"</span>){</div><div class="line"></div><div class="line">  		<span class="keyword">if</span>(<span class="keyword">typeof</span>(w)==<span class="string">"undefined"</span>){</div><div class="line">			w=<span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</div><div class="line">		}</div><div class="line"></div><div class="line">  		w.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">    		<span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML=event.data;</div><div class="line">  		};</div><div class="line">	}</div><div class="line">	<span class="keyword">else</span>{</div><div class="line">		<span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML=<span class="string">"Sorry, your browser does not support Web Workers..."</span>;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopWorker</span><span class="params">()</span></span>{</div><div class="line">	w.terminate();</div><div class="line">}</div></pre></figure><br><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_webworker" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="常见问题">常见问题</h3>
-<p>若无法使用，可尝试加上事件前缀，譬如：</p>
-<figure class="highlight"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div></pre></figure>
-
+<p>1，不能跨域加载JS<br>2，worker内代码不能访问DOM</p>
 <h3 id="兼容性">兼容性</h3>
-<p>目前主要是谷歌内核以及火狐浏览器支持。</p>
-
+<div class="caniuse" data-feature="title"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="ezn6gra1hd00jubu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/14/Web-Workers/" data-id="5f2sdk2vd1iuzv4e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,15 +121,11 @@ Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标�
     
 <nav id="article-nav">
   
-    <a href="/2014/12/29/WebVTT/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          WebVTT
-        
-      </div>
-    </a>
   
+    <a href="/2015/01/14/server-sent-event/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">server-sent-event</div>
+    </a>
   
 </nav>
 
