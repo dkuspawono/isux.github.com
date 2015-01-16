@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>channel-messaging | HTML5 API手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用途
+通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。
+语法
+//开启通道：var channel = new Mess">
+<meta property="og:type" content="article">
+<meta property="og:title" content="channel-messaging">
+<meta property="og:url" content="http://yoursite.com/2015/01/14/channel-messaging/">
+<meta property="og:site_name" content="HTML5 API手册">
+<meta property="og:description" content="用途
+通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。
+语法
+//开启通道：var channel = new Mess">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="channel-messaging">
+<meta name="twitter:description" content="用途
+通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。
+语法
+//开启通道：var channel = new Mess">
+
+  
+    <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HTML5 API手册</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-channel-messaging" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/14/channel-messaging/" class="article-date">
+  <time datetime="2015-01-14T14:43:21.000Z" itemprop="datePublished">Jan 14 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      channel-messaging
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="comment">//开启通道：</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"></div><div class="line"><span class="comment">//MessageChannel对象包括了两个端口port1和port2，一般第一个端口是本地端口，第二个是发送到远程windows或worker的端口。</span></div><div class="line">channel.port1;</div><div class="line">channel.port2;</div><div class="line"></div><div class="line"><span class="comment">//用postMessage通讯：</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"></div><div class="line"><span class="comment">//用onmessage接受事件：</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{<span class="comment">//something }</span></div><div class="line"></div><div class="line"><span class="comment">//你也可以发给Web worker：</span></div><div class="line">worker.postMessage({code:’port’},[channel.port2]);</div><div class="line"></div><div class="line"><span class="comment">//Web worker接收一样用onmessage：</span></div><div class="line">onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">     <span class="keyword">if</span> (event.data.code == <span class="string">"port"</span>) {</div><div class="line">     event.ports[<span class="number">0</span>].postMessage(<span class="string">"Port received."</span>);</div><div class="line">   }</div><div class="line">}</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="comment">//定义channel对象</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"><span class="comment">//发送一个端口到对面</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"><span class="comment">//接受对面端口发来的消息</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ <span class="comment">// Message is in event.data alert("Message is: " + event.data); }</span></div><div class="line"><span class="comment">//发送消息到对面</span></div><div class="line">channel.port1.postMessage(<span class="string">'hello'</span>);</div></pre></figure><br><a href="http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="Channel messaging"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/14/channel-messaging/" data-id="ey4nqcxvshksxih7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/01/14/cross-document-messaging/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cross-document-messaging</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/14/channel-messaging/">channel-messaging</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/14/cross-document-messaging/">cross-document-messaging</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/14/Web-Workers/">Web Workers</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/14/server-sent-event/">server-sent-event</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/svg/">SVG基本知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 timezhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script src="/js/caniuse.min.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
