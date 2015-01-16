@@ -3,29 +3,53 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Media Fragments | HTML5 API手册</title>
+  <title>ORTC-for-WebRTC | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="用途
-Media Fragments让视频、音频等媒体有了可以展示区块（fragments）的功能。这里的裁剪可以是时间的裁剪，也可以是视窗大小的裁剪。
+用途
 语法
-如下，只需要在视频源末尾加上”#”或者”?”，之后加上相应参数，就可以实现裁剪展示功能。以下例子，表示只自动播放视频5-10s。
-http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间。若只">
+code
+
+实例
+code查看DEMO
+常见问题
+
+问题1
+问题2
+
+兼容性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Media Fragments">
-<meta property="og:url" content="http://yoursite.com/2014/12/29/media-fragments/">
+<meta property="og:title" content="ORTC-for-WebRTC">
+<meta property="og:url" content="http://yoursite.com/2015/01/15/ORTC-for-WebRTC/">
 <meta property="og:site_name" content="HTML5 API手册">
 <meta property="og:description" content="用途
-Media Fragments让视频、音频等媒体有了可以展示区块（fragments）的功能。这里的裁剪可以是时间的裁剪，也可以是视窗大小的裁剪。
+用途
 语法
-如下，只需要在视频源末尾加上”#”或者”?”，之后加上相应参数，就可以实现裁剪展示功能。以下例子，表示只自动播放视频5-10s。
-http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间。若只">
+code
+
+实例
+code查看DEMO
+常见问题
+
+问题1
+问题2
+
+兼容性">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Media Fragments">
+<meta name="twitter:title" content="ORTC-for-WebRTC">
 <meta name="twitter:description" content="用途
-Media Fragments让视频、音频等媒体有了可以展示区块（fragments）的功能。这里的裁剪可以是时间的裁剪，也可以是视窗大小的裁剪。
+用途
 语法
-如下，只需要在视频源末尾加上”#”或者”?”，之后加上相应参数，就可以实现裁剪展示功能。以下例子，表示只自动播放视频5-10s。
-http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间。若只">
+code
+
+实例
+code查看DEMO
+常见问题
+
+问题1
+问题2
+
+兼容性">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -75,14 +99,14 @@ http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-media-fragments" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ORTC-for-WebRTC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/media-fragments/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+    <a href="/2015/01/15/ORTC-for-WebRTC/" class="article-date">
+  <time datetime="2015-01-15T03:09:22.000Z" itemprop="datePublished">Jan 15 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Media/">Media</a>
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
   </div>
 
   </div>
@@ -93,7 +117,7 @@ http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间�
         
   
     <h1 class="article-title" itemprop="name">
-      Media Fragments
+      ORTC-for-WebRTC
     </h1>
   
 
@@ -102,20 +126,23 @@ http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间�
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Media Fragments让视频、音频等媒体有了可以展示区块（fragments）的功能。这里的裁剪可以是时间的裁剪，也可以是视窗大小的裁剪。</p>
+<p>用途</p>
 <h3 id="语法">语法</h3>
-<p>如下，只需要在视频源末尾加上”#”或者”?”，之后加上相应参数，就可以实现裁剪展示功能。<br>以下例子，表示只自动播放视频5-10s。</p>
-<figure class="highlight"><pre><div class="line"><span class="symbol">http:</span>/<span class="regexp">/xxx/video</span>.mp4<span class="comment">#t=5,10</span></div></pre></figure><br>其他属性：<br>1. t=a,b; 表示a到b之间的时间。若只有a，则表示从a开始播到最后，若只有b，则表示从视频开头到时间b。<br><br>2. xywh=160,120,320,240; 表示起始坐标(x,y)，宽度高度(w,h），会截取屏幕的某个区域作为视窗展示视频。也可以定义单位，例如：<br>xywh=pixel:160,120,320,240;（像素）<br>xywh=percent:25,25,50,50;（百分比）<br><br>3. track=’ogg_1’，表示视频轨道、track=’ogg_2’，表示音频轨道。<br><br>4. id=’aaaa’，表示如果文件定义了fragments（区块）的话可以使用他们的对应id值。<br><br>注：多个属性只能用?分隔，值之间用&amp;连接，如：<br><figure class="highlight"><pre><div class="line">http://xxx/video.ogv?<span class="variable">t=</span><span class="number">2</span>,<span class="number">9</span>&amp;<span class="variable">track=</span>’ogg_1′</div></pre></figure>
+<figure class="highlight"><pre><div class="line">code</div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">code</div></pre></figure><br><a href="https://simpl.info/mediafragments/" target="_blank" rel="external">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line">code</div></pre></figure><br><a href="demo url">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li>问题1</li>
+<li>问题2</li>
+</ul>
 <h3 id="兼容性">兼容性</h3>
-<p>该属性大部分浏览器还没有完整支持，但有polyfill可以实现这个效果<a href="https://github.com/tomayac/Media-Fragments-URI/" target="_blank" rel="external">mediafragments.js</a></p>
-
+<div class="caniuse" data-feature="webrtc"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/media-fragments/" data-id="gg76xlqojj4knxo0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/15/ORTC-for-WebRTC/" data-id="b9u8qpybi0v6al0x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,19 +151,10 @@ http://xxx/video.mp4#t=5,10其他属性：1. t=a,b; 表示a到b之间的时间�
     
 <nav id="article-nav">
   
-    <a href="/2014/12/29/vibration/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          vibration
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/12/29/html-imports/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/01/14/Web-Workers/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">HTML Imports</div>
+      <div class="article-nav-title">Web Workers</div>
     </a>
   
 </nav>
