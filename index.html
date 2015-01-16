@@ -21,7 +21,7 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
@@ -65,6 +65,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ORTC-for-WebRTC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/16/ORTC-for-WebRTC/" class="article-date">
+  <time datetime="2015-01-16T02:28:00.000Z" itemprop="datePublished">Jan 16 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Real-time-communication/">Real-time communication</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/16/ORTC-for-WebRTC/">ORTC-for-WebRTC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>WebRTC 1.0使用的是<a href="http://en.wikipedia.org/wiki/Session_Description_Protocol" target="_blank" rel="external">SDP</a>（会话描述协议），但是SDP有很多复杂的API无法使用到WebRTC当中，而且它的兼容性并不好也缺少API应答。所以W3C小组将会在WebRTC1.1中集成ORTC (Object Real-Time Communications 面向对象的RTC)：</p>
+<blockquote>
+<p>ORTC API很适合“移动优先，云优先”的世界，因为它支持高级视频特性，像可伸缩的视频编码和simulcast。这些高级视频技术已经被证实难以在WebRTC 1.0中的SDP中以可互操作的方式支持。相对而言，在JavaScript对象API中利用这些高级视频技术会更简单。</p>
+</blockquote>
+<p>ORTC是要做到“定义一系列WebIDL中的ECMAScript API，通过real-time协议，允许媒体可以从其他浏览器或者设备进行发送和接收信息”，相较于SDP，ORTC着重于“发送方”、“接收方”和传输对象。</p>
+<h3 id="实例">实例</h3>
+<figure class="highlight"><pre><div class="line">alice_peerConnection = <span class="keyword">new</span> RTC.PeerConnection(connectionOptions);</div><div class="line">   bob_peerConnection = <span class="keyword">new</span> RTC.PeerConnection(connectionOptions);</div><div class="line"></div><div class="line">   <span class="comment">// Request access to local webcam and microphone.</span></div><div class="line">   RTC.getUserMedia({</div><div class="line">       <span class="string">'audio'</span>: <span class="literal">true</span>,</div><div class="line">       <span class="string">'video'</span>: <span class="literal">true</span></div><div class="line">   }, <span class="function"><span class="keyword">function</span> <span class="params">(_alice_stream)</span> </span>{</div><div class="line">       alice_stream = _alice_stream;</div><div class="line"></div><div class="line">       RTC.getUserMedia({</div><div class="line">           <span class="string">'audio'</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">'video'</span>: <span class="literal">true</span></div><div class="line">       }, <span class="function"><span class="keyword">function</span> <span class="params">(_bob_stream)</span> </span>{</div><div class="line">           bob_stream = _bob_stream;</div><div class="line"></div><div class="line">           <span class="keyword">if</span> (!alice_peerConnection || !bob_peerConnection) {</div><div class="line">               alice_stream.stop();</div><div class="line">               bob_stream.stop();</div><div class="line">               <span class="keyword">return</span>;</div><div class="line">           }</div><div class="line"></div><div class="line">           <span class="comment">// Show video HTML elements.</span></div><div class="line">           $(<span class="string">'TD.video &gt; DIV'</span>).show();</div><div class="line"></div><div class="line">           <span class="comment">// Show local video &amp; audio stream to the local video HTML elements.</span></div><div class="line">           $(<span class="string">'#alice_localVideo'</span>).attr(<span class="string">'src'</span>, RTC.URL.createObjectURL(alice_stream));</div><div class="line">           $(<span class="string">'#bob_localVideo'</span>).attr(<span class="string">'src'</span>, RTC.URL.createObjectURL(bob_stream));</div><div class="line"></div><div class="line">           <span class="comment">// When a remote video &amp; audio stream is added show it in the remote video HTML elements.</span></div><div class="line">           alice_peerConnection.onaddstream = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">               $(<span class="string">'#alice_remoteVideo'</span>).attr(<span class="string">'src'</span>, RTC.URL.createObjectURL(event.stream));</div><div class="line">           };</div><div class="line">           bob_peerConnection.onaddstream = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">               $(<span class="string">'#bob_remoteVideo'</span>).attr(<span class="string">'src'</span>, RTC.URL.createObjectURL(event.stream));</div><div class="line">           };</div><div class="line"></div><div class="line">           <span class="comment">// Attach local video &amp; audio stream to connection to stream it to peer.</span></div><div class="line">           alice_peerConnection.addStream(alice_stream);</div><div class="line">           bob_peerConnection.addStream(bob_stream);</div><div class="line"></div><div class="line">           <span class="comment">// Tightly couple trickle ICE.</span></div><div class="line">           alice_peerConnection.onicecandidate = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>{</div><div class="line">               <span class="keyword">if</span> (!event.candidate) <span class="keyword">return</span>;</div><div class="line">               bob_peerConnection.addIceCandidate(<span class="keyword">new</span> RTC.IceCandidate(<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(event.candidate))));</div><div class="line">           }</div><div class="line">           bob_peerConnection.onicecandidate = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>{</div><div class="line">               <span class="keyword">if</span> (!event.candidate) <span class="keyword">return</span>;</div><div class="line">               alice_peerConnection.addIceCandidate(<span class="keyword">new</span> RTC.IceCandidate(<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(event.candidate))));</div><div class="line">           }</div><div class="line"></div><div class="line">           <span class="comment">// Tightly couple session description exchange.</span></div><div class="line">           alice_peerConnection.createOffer(<span class="function"><span class="keyword">function</span> <span class="params">(sessionDescription)</span> </span>{</div><div class="line">               alice_peerConnection.setLocalDescription(sessionDescription);</div><div class="line">               bob_peerConnection.setRemoteDescription(<span class="keyword">new</span> RTC.SessionDescription(<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(sessionDescription))));</div><div class="line">               bob_peerConnection.createAnswer(<span class="function"><span class="keyword">function</span> <span class="params">(sessionDescription)</span> </span>{</div><div class="line">                   bob_peerConnection.setLocalDescription(sessionDescription);</div><div class="line">                   alice_peerConnection.setRemoteDescription(<span class="keyword">new</span> RTC.SessionDescription(<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(sessionDescription))));</div><div class="line">               }, fail);</div><div class="line">           }, fail);</div><div class="line">       }, fail);</div><div class="line">   }, fail);</div></pre></figure>
+
+<p>demo依赖Node.js，demo请参考<a href="https://github.com/openpeer/ortc/tree/master/rtc-over-ortc" target="_blank" rel="external">这里</a>，需要设备安装摄像头才可以测试demo。</p>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li>WebRTC 1.0和WebRTC 1.1+之间会会出现兼容性问题，因为WebRTC 1.0使用的是SDP，而之后会使用ORTC。不过这个问题<a href="https://github.com/openpeer/ortc-js-shim" target="_blank" rel="external">shim</a>可以解决。</li>
+</ul>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="stream"></div><br><div class="caniuse" data-feature="rtcpeerconnection"></div>
+
+<h3 id="参考资料">参考资料</h3>
+<ol>
+<li><a href="http://ortc.org/" target="_blank" rel="external">ORTC (Object RTC) Object API for RTC – Mobile, Server, Web</a></li>
+<li><a href="http://www.infoq.com/cn/news/2014/08/ortc-webrtc" target="_blank" rel="external">ORTC以及WebRTC的未来</a></li>
+<li><a href="https://bloggeek.me/ortc-webrtc/" target="_blank" rel="external">What is ORTC: A WebRTC Competitor, WebRTC 2.0 or WebRTC 1.1?</a></li>
+<li><a href="http://www.webtorials.com/content/2014/12/present-and-future-webrtc.html" target="_blank" rel="external">Present and Future WebRTC</a></li>
+<li><a href="http://cn.msopentech.com/blog/2014/10/21/%E5%BE%AE%E8%BD%AF%EF%BC%8C%E8%B0%B7%E6%AD%8C%EF%BC%8Chookflash-%E5%8F%8A%E5%85%B6%E4%BB%96%E5%8E%82%E5%95%86%E5%90%88%E8%91%97%E5%AE%9E%E6%97%B6%E9%80%9A%E4%BF%A1%E8%A7%84%E8%8C%83/" target="_blank" rel="external">微软，谷歌，Hookflash 及其他厂商合著实时通信规范</a></li>
+<li><a href="https://www.w3.org/2011/04/webrtc/wiki/images/6/63/WebRTC_RTCSender-Receiver.pdf" target="_blank" rel="external">RTCRtpSender/Receiver</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/16/ORTC-for-WebRTC/" data-id="zow30qztk9zitups" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-channel-messaging" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/01/14/channel-messaging/" class="article-date">
@@ -99,7 +165,7 @@
 <h3 id="实例">实例</h3>
 <p><figure class="highlight"><pre><div class="line"><span class="comment">//定义channel对象</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"><span class="comment">//发送一个端口到对面</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"><span class="comment">//接受对面端口发来的消息</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ <span class="comment">// Message is in event.data alert("Message is: " + event.data); }</span></div><div class="line"><span class="comment">//发送消息到对面</span></div><div class="line">channel.port1.postMessage(<span class="string">'hello'</span>);</div></pre></figure><br><a href="http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="Channel messaging"></div>
+<div class="caniuse" data-feature="channel-messaging"></div>
       
     </div>
     <footer class="article-footer">
@@ -152,7 +218,7 @@
 <li>问题2<br>跨文档通讯（Cross-document Messaging）跟通道通讯（Channel Messaging）同为WEB通信，只是后者支持度娇弱，可以结合一起学习。</li>
 </ul>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="Cross-document messaging"></div>
+<div class="caniuse" data-feature="x-doc-messaging"></div>
       
     </div>
     <footer class="article-footer">
@@ -631,56 +697,6 @@
 
 
   
-    <article id="post-data-URIs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/09/data-URIs/" class="article-date">
-  <time datetime="2015-01-09T07:12:39.000Z" itemprop="datePublished">Jan 9 2015</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/09/data-URIs/">data-uris</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说明">说明</h2>
-<p>data URIs是由RFC 2397定义, 允许将一个小文件进行编码后嵌入到另外一个文档里.</p>
-<h2 id="语法">语法</h2>
-<p><figure class="highlight"><pre><div class="line">data:[<span class="link_label">&lt;mediatype&gt;</span>][<span class="link_reference">;base64</span>],<span class="xml"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span></div></pre></figure><br>mediatype是一种MIME类型字符串, 例如 “image/jpeg” 代表 JPEG 图像文件.如果省略这个参数, 则默认值为text/plain;charset=US-ASCII</p>
-<blockquote>
-<p>如果数据是文本类型, 你可以直接将文本嵌入在data:后面 (根据文本类型以及编码,使用合适的HTML实体编码或者百分号编码). 如果是二进制数据, 你可以将数据进行base64编码之后再进行嵌入。</p>
-</blockquote>
-<h2 id="示例">示例</h2>
-<p>data:,Hello%2C%20World!<br>简单的text/plain类型数据<br>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D<br>base64编码过的数据<br>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E<br>一个HTML文档源代码 </p>
-<h2 id="常见问题">常见问题</h2>
-<p>长度限制<br>虽然Mozilla支持无限长度的data URIs,但是标准中并没有规定浏览器必须支持无限长度的data URIs.比如,Opera 11限制data URIs的长度最多为65000个字符. </p>
-<p>缺乏错误处理<br>MIME类型错误或者base64编码错误,都会造成data URIs无法被正常解析, 但不会有任何相关错误提示.</p>
-<p>不支持查询字符串<br>一个data URI的数据字段是没有结束标记的,所以尝试在一个data URI后面添加查询字符串会导致,查询字符串也一并被当作数据字段.例如:</p>
-<h2 id="浏览器兼容性">浏览器兼容性</h2>
-<div class="caniuse" data-feature="datauri"></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/09/data-URIs/" data-id="zqt8sgqco1yottzj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -694,7 +710,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -707,7 +723,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -717,6 +733,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/01/16/ORTC-for-WebRTC/">ORTC-for-WebRTC</a>
+          </li>
         
           <li>
             <a href="/2015/01/14/channel-messaging/">channel-messaging</a>
@@ -732,10 +752,6 @@
         
           <li>
             <a href="/2015/01/14/server-sent-event/">server-sent-event</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/13/svg/">SVG基本知识</a>
           </li>
         
       </ul>
@@ -765,7 +781,7 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">

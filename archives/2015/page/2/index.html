@@ -3,44 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vibration | HTML5 API手册</title>
+  <title>Archives: 2015 | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途
-手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。
-语法
-
-一次震动navigator.vibrate(1000);表示只震动一次，持续时间为一秒
-
-多次震动navigator.vibrate([500, 300, 100]);其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。
-
-
-实例">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vibration">
-<meta property="og:url" content="http://yoursite.com/2014/12/29/vibration/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/archives/2015/page/2/">
 <meta property="og:site_name" content="HTML5 API手册">
-<meta property="og:description" content="用途
-手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。
-语法
-
-一次震动navigator.vibrate(1000);表示只震动一次，持续时间为一秒
-
-多次震动navigator.vibrate([500, 300, 100]);其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。
-
-
-实例">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vibration">
-<meta name="twitter:description" content="用途
-手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。
-语法
-
-一次震动navigator.vibrate(1000);表示只震动一次，持续时间为一秒
-
-多次震动navigator.vibrate([500, 300, 100]);其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。
-
-
-实例">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -90,16 +63,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-data-URIs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/vibration/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+    <a href="/2015/01/09/data-URIs/" class="article-date">
+  <time datetime="2015-01-09T07:12:39.000Z" itemprop="datePublished">Jan 9 2015</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Media/">Media</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -107,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      vibration
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/09/data-URIs/">data-uris</a>
     </h1>
   
 
@@ -116,52 +87,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="用途">用途</h3>
-<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
-<h3 id="语法">语法</h3>
-<ul>
-<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
-</li>
-<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
-</li>
-</ul>
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="vibration"></div>
-
+        <h2 id="说明">说明</h2>
+<p>data URIs是由RFC 2397定义, 允许将一个小文件进行编码后嵌入到另外一个文档里.</p>
+<h2 id="语法">语法</h2>
+<p><figure class="highlight"><pre><div class="line">data:[<span class="link_label">&lt;mediatype&gt;</span>][<span class="link_reference">;base64</span>],<span class="xml"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span></div></pre></figure><br>mediatype是一种MIME类型字符串, 例如 “image/jpeg” 代表 JPEG 图像文件.如果省略这个参数, 则默认值为text/plain;charset=US-ASCII</p>
+<blockquote>
+<p>如果数据是文本类型, 你可以直接将文本嵌入在data:后面 (根据文本类型以及编码,使用合适的HTML实体编码或者百分号编码). 如果是二进制数据, 你可以将数据进行base64编码之后再进行嵌入。</p>
+</blockquote>
+<h2 id="示例">示例</h2>
+<p>data:,Hello%2C%20World!<br>简单的text/plain类型数据<br>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D<br>base64编码过的数据<br>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E<br>一个HTML文档源代码 </p>
+<h2 id="常见问题">常见问题</h2>
+<p>长度限制<br>虽然Mozilla支持无限长度的data URIs,但是标准中并没有规定浏览器必须支持无限长度的data URIs.比如,Opera 11限制data URIs的长度最多为65000个字符. </p>
+<p>缺乏错误处理<br>MIME类型错误或者base64编码错误,都会造成data URIs无法被正常解析, 但不会有任何相关错误提示.</p>
+<p>不支持查询字符串<br>一个data URI的数据字段是没有结束标记的,所以尝试在一个data URI后面添加查询字符串会导致,查询字符串也一并被当作数据字段.例如:</p>
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+<div class="caniuse" data-feature="datauri"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="0cb35vploaioaea7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/09/data-URIs/" data-id="zqt8sgqco1yottzj" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/12/29/WebVTT/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          WebVTT
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/12/29/contentEditable/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">contentEditable</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2015/">&laquo; Prev</a><a class="page-number" href="/archives/2015/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">

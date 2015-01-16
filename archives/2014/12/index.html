@@ -21,7 +21,7 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
@@ -65,66 +65,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-selectors-api" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-web-notifications" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/selectors-api/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/selectors-api/">Selectors API</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>querySelector 返回当前文档中第一个匹配特定选择器的元素。</p>
-<p>querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元素。</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">// querySelector 用法 默认返回找到的第一个元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelector(selectors);</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 用法 默认返回一组元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelectorAll(selectors);</div></pre></figure>
-
-<p>selectors 支持 CSS 选择器写法。</p>
-<h3 id="实例">实例</h3>
-<p>HTML</p>
-<figure class="highlight"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"show-demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"btns"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-1"</span>&gt;</span>querySelect<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-2"</span>&gt;</span>querySelectAll<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-3"</span>&gt;</span>清除选中状态<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"tips"</span>&gt;</span>请点击上面的按钮改变选中的状态...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"list"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></figure>
-
-<p>JavaScript</p>
-<figure class="highlight"><pre><div class="line">……</div><div class="line"><span class="keyword">var</span> $li = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);;</div><div class="line">……</div><div class="line"><span class="keyword">var</span> $allLi = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</div><div class="line">……</div></pre></figure>
-
-<p><a href="http://m.isux.us/touch_proj/h5api/selectors-api.html" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="querySelector"></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="te8idojjr1bb4q6p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-pointer-events" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/29/pointer-events/" class="article-date">
+    <a href="/2014/12/29/web-notifications/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
@@ -140,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/pointer-events/">Pointer Events</a>
+      <a class="article-title" href="/2014/12/29/web-notifications/">Web Notifications API</a>
     </h1>
   
 
@@ -149,74 +92,46 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。</p>
+<p>web notification 可以定时向客户端推送消息通知，比如Web OA中可以在用户的浏览器中的右下角弹出一个信息提示窗口，即时传达给用户相关通知等。</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//请求指针锁定</span></div><div class="line"><span class="function">requestPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//退出指针锁定</span></div><div class="line"><span class="function">exitPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定解除时触发</span></div><div class="line"><span class="function">pointerlockchange</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定出错时触发;</span></div><div class="line"><span class="function">pointerlockerror</span>();</div></pre></figure>
+<p>Methods(方法), Properties(属性), and Events(事件)</p>
+<h4 id="methods">methods</h4>
+<ul>
+<li>permission 获得授权状态<br>  Notification.permission会获得以下三个字符串之一：default, denied, granted。<br>  default 相当于“拒绝”，这表示用户没有选择网站给出的通知。<br>  denied 表示拒绝，这意味着用户不希望通知。<br>  granted 表示用户同意进行桌面通知。<br>  当 Notification.permission 获得 default 或者 denied 后，我们还可以使用 window.Notification.requestPermission(); 在用户下次进入此页面时再一次询问是否可以进行桌面通知。</li>
+<li>requestPermission() 请求用户授权</li>
+<li>close() 关闭通知</li>
+</ul>
+<h4 id="Properties">Properties</h4>
+<p>Notification(title, options)</p>
+<ul>
+<li>title 消息标题</li>
+<li>options JSON数据，有以下选项<br>  body 消息的主体内容，文本类型<br>  lang 消息文本的语言，其值必须符合的BCP47标准，如 en-US, zh-CN<br>  dir 消息文本的方向，有rtl &amp; ltr<br>  tag 设置消息的Tag归类，以便检索、替换、删除通知<br>  icon 消息窗口的ICON URL</li>
+</ul>
+<h4 id="Events">Events</h4>
+<ul>
+<li>onshow 对话框展示时触发</li>
+<li>onclick 当用户点击通知对话框时，触发</li>
+<li>onclose 当用户关闭对话框，或脚本调用close方法时，触发</li>
+<li>onerror 错误事件，目前来看一般只会接触到权限错误</li>
+</ul>
+<h4 id="支持检测">支持检测</h4>
+<figure class="highlight"><pre><div class="line"><span class="keyword">if</span> (<span class="string">'Notification'</span> <span class="keyword">in</span> window) {</div><div class="line"> <span class="regexp">//</span> <span class="constant">API</span> supported</div><div class="line">} <span class="keyword">else</span> {</div><div class="line"> <span class="regexp">//</span> <span class="constant">API</span> <span class="keyword">not</span> supported</div><div class="line">}</div></pre></figure>
+
+<h4 id="获取权限">获取权限</h4>
+<figure class="highlight"><pre><div class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.Notification.permission == <span class="string">"granted"</span>){</div><div class="line"> doing...</div><div class="line"> <span class="comment">// 浏览器已获得该页面的通知权限</span></div><div class="line">}<span class="keyword">else</span>{</div><div class="line"> <span class="built_in">window</span>.Notification.requestPermission();</div><div class="line"> <span class="comment">// 请求用户授权</span></div><div class="line">}</div></pre></figure>
+
+<h4 id="创建并发送">创建并发送</h4>
+<figure class="highlight"><pre><div class="line"><span class="comment">// 创建消息</span></div><div class="line"><span class="keyword">var</span> notification = <span class="keyword">new</span> Notification(<span class="string">'您有新的消息'</span>, {</div><div class="line"> body: <span class="string">'消息内容'</span>,</div><div class="line"> tag: <span class="string">'notice'</span>,</div><div class="line"> icon: <span class="string">'http://domain.com/icon.png'</span>,</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// 发送消息 </span></div><div class="line">notification.onshow = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line"> <span class="built_in">console</span>.log(<span class="string">'Notification shown'</span>);</div><div class="line"> setTimeout(notification.close(), <span class="number">1500</span>); <span class="comment">// 设置关闭时间</span></div><div class="line">};</div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<figure class="highlight"><pre><div class="line">elem.requestPointerLock = elem.requestPointerLock    ||</div><div class="line">                              elem.mozRequestPointerLock ||</div><div class="line">                              elem.webkitRequestPointerLock;</div><div class="line">elem.requestPointerLock();</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pointerLockError</span><span class="params">()</span> </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"锁定指针时出错。"</span>);</div><div class="line">}</div></pre></figure>
-
-<p><a href="http://m.isux.us/touch_proj/h5api/Pointer-Events.html" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="常见问题">常见问题</h3>
-<p>若无法使用，可尝试加上事件前缀，譬如：</p>
-<figure class="highlight"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div></pre></figure>
-
+<p><figure class="highlight"><pre><div class="line">code</div></pre></figure><br><a href="demo url">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<p>目前主要是谷歌内核以及火狐浏览器支持。</p>
+<div class="caniuse" data-feature="Web%20Notifications"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="4dwisukltio3w7bx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hashchange" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/29/hashchange/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/hashchange/">hashchange</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">code</div></pre></figure>
-
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">(window)</span> </span>{</div><div class="line"></div><div class="line">  <span class="comment">// 如果浏览器原生支持该事件,则退出  </span></div><div class="line"><span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) { <span class="keyword">return</span>; }</div><div class="line"></div><div class="line">  <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</div><div class="line">    oldURL = location.href,</div><div class="line">    oldHash = location.hash;</div><div class="line"></div><div class="line">  <span class="comment">// 每隔100ms检测一下location.hash是否发生变化</span></div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> newURL = location.href,</div><div class="line">      newHash = location.hash;</div><div class="line"></div><div class="line">    <span class="comment">// 如果hash发生了变化,且绑定了处理函数...</span></div><div class="line">    <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span> ) {</div><div class="line">      <span class="comment">// execute the handler</span></div><div class="line">      <span class="built_in">window</span>.onhashchange({</div><div class="line">        type: <span class="string">"hashchange"</span>,</div><div class="line">        oldURL: oldURL,</div><div class="line">        newURL: newURL</div><div class="line">      });</div><div class="line"></div><div class="line">      oldURL = newURL;</div><div class="line">      oldHash = newHash;</div><div class="line">    }</div><div class="line">  }, <span class="number">100</span>);</div><div class="line"></div><div class="line">})(<span class="built_in">window</span>);</div></pre></figure><br><a href="http://html5demos.com/dataset" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="hashchange"></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="isyda49jvd1407no" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/web-notifications/" data-id="mbkhzo680tl226o9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,6 +241,131 @@
 
 
   
+    <article id="post-selectors-api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/selectors-api/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/selectors-api/">Selectors API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>querySelector 返回当前文档中第一个匹配特定选择器的元素。</p>
+<p>querySelectorAll 返回当前文档中匹配一个特定选择器的所有的元素。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="comment">// querySelector 用法 默认返回找到的第一个元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelector(selectors);</div><div class="line"></div><div class="line"><span class="comment">// querySelectorAll 用法 默认返回一组元素</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.querySelectorAll(selectors);</div></pre></figure>
+
+<p>selectors 支持 CSS 选择器写法。</p>
+<h3 id="实例">实例</h3>
+<p>HTML</p>
+<figure class="highlight"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"show-demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"btns"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-1"</span>&gt;</span>querySelect<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-2"</span>&gt;</span>querySelectAll<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">id</span>=<span class="value">"btn-3"</span>&gt;</span>清除选中状态<span class="tag">&lt;/<span class="title">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"tips"</span>&gt;</span>请点击上面的按钮改变选中的状态...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"list"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>选我选我3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></figure>
+
+<p>JavaScript</p>
+<figure class="highlight"><pre><div class="line">……</div><div class="line"><span class="keyword">var</span> $li = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);;</div><div class="line">……</div><div class="line"><span class="keyword">var</span> $allLi = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</div><div class="line">……</div></pre></figure>
+
+<p><a href="http://m.isux.us/touch_proj/h5api/selectors-api.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="querySelector"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/selectors-api/" data-id="te8idojjr1bb4q6p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-device-orientation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/device-orientation/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/device-orientation/">Device Orientation API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>Device Orientation API方便开发人员在移动端页面中确定用户当前如何使用手机，包括横竖屏，左右摇摆等。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line">orientationChange <span class="comment">//确定用户何时将设备由横向查看模式切换为纵向查看模式;</span></div><div class="line"></div><div class="line">MozOrientation <span class="comment">//兼容移动版 Firefox;</span></div><div class="line"></div><div class="line">deviceorientation <span class="comment">//加速度计检测到设备的方向发生变化时，用于告诉我们设备在空间上朝向哪儿;</span></div><div class="line"></div><div class="line">devicemotion <span class="comment">//deviceorientation 的超集，除了方向信息以外，还有加速度信息;</span></div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><img src="/img/device.png" alt="device"><br>orientationchange 事件以及orientation对象属性，可以通过获取此值对用户操作进行反馈，比如横竖屏提示。当然实现此效果也可以用CSS媒体查询。</p>
+<figure class="highlight"><pre><div class="line">unction orientationChange(){</div><div class="line">            <span class="keyword">switch</span>(<span class="built_in">window</span>.orientation) {</div><div class="line">                <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// 移动设备正确摆放</span></div><div class="line">                <span class="keyword">case</span> <span class="number">180</span>: <span class="comment">// 移动设备倒立摆放</span></div><div class="line">                <span class="keyword">case</span> -<span class="number">90</span>: <span class="comment">// 表示向右旋转的横向模式</span></div><div class="line">                <span class="keyword">case</span> <span class="number">90</span>: <span class="comment">// 表示向左旋转的横向模式</span></div><div class="line">            }</div><div class="line">}</div><div class="line"><span class="comment">//orientationchange for ios , resize for android</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"onorientationchange"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">"orientationchange"</span> : <span class="string">"resize"</span>, orientationChange, <span class="literal">false</span>);</div></pre></figure>
+
+<p>deviceorientation 事件以及事件对象,其对象值的单位为deg，即移动设备旋转的角度。</p>
+<figure class="highlight"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">capture_orientation</span> <span class="params">(event)</span> </span>{</div><div class="line">         <span class="keyword">var</span> alpha = event.alpha;<span class="comment">//围绕Z轴旋转</span></div><div class="line">         <span class="keyword">var</span> beta = event.beta;<span class="comment">//围绕X轴旋转</span></div><div class="line">         <span class="keyword">var</span> gamma = event.gamma;<span class="comment">//围绕Y轴旋转</span></div><div class="line">}</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.DeviceOrientationEvent) {</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'deviceorientation'</span>, capture_orientation, <span class="literal">false</span>);</div><div class="line">}</div></pre></figure>
+
+<p>MozOrientation 事件 Firefox 移动浏览器上实现的检测设备方向的事件。静止状态下，x 值为 0，y 值为 0，z 值为 1。这几个值都介于1和-1之间。</p>
+<ul>
+<li>向右倾斜，x 会减少到 -1；向左倾斜，x 会增大到 1</li>
+<li>向远离用户方向倾斜，y 值会减少到 -1；向接近用户方向倾斜，y 值会增大到 1</li>
+</ul>
+<figure class="highlight"><pre><div class="line"><span class="comment">//针对 Android 版的 Firefox</span></div><div class="line"><span class="keyword">if</span> (!evt.gamma &amp;&amp; !evt.beta) {</div><div class="line">  evt.gamma = -(evt.x * (<span class="number">180</span> / <span class="built_in">Math</span>.PI));</div><div class="line">  evt.beta = (evt.y * (<span class="number">180</span> / <span class="built_in">Math</span>.PI));</div><div class="line">}</div></pre></figure>
+
+<p>devicemotion 事件<br>deviceorientation 的超集，除了方向信息以外，还有加速度信息。<br>acceleration: 一个包含 x，y，z 属性的对象，不考虑重力加速度的情况。<br>accelerationIncludingGravity: 考虑 z 轴自然重力加速的情况下，告诉你每个方向上的加速度。</p>
+<p><a href="http://m.isux.us/touch/h5api/Device-Orientation-Code.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li>问题1</li>
+<li>问题2</li>
+</ul>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="Device"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/device-orientation/" data-id="mnxbfemt1lnaz6lj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-dataset" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/12/29/dataset/" class="article-date">
@@ -376,14 +416,14 @@
 
 
   
-    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-pointer-events" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/vibration/" class="article-date">
+    <a href="/2014/12/29/pointer-events/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Media/">Media</a>
+    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
   </div>
 
   </div>
@@ -394,7 +434,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
+      <a class="article-title" href="/2014/12/29/pointer-events/">Pointer Events</a>
     </h1>
   
 
@@ -403,23 +443,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
+<p>Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。</p>
 <h3 id="语法">语法</h3>
-<ul>
-<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
-</li>
-<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
-</li>
-</ul>
+<figure class="highlight"><pre><div class="line"><span class="comment">//请求指针锁定</span></div><div class="line"><span class="function">requestPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//退出指针锁定</span></div><div class="line"><span class="function">exitPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定解除时触发</span></div><div class="line"><span class="function">pointerlockchange</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定出错时触发;</span></div><div class="line"><span class="function">pointerlockerror</span>();</div></pre></figure>
+
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
+<figure class="highlight"><pre><div class="line">elem.requestPointerLock = elem.requestPointerLock    ||</div><div class="line">                              elem.mozRequestPointerLock ||</div><div class="line">                              elem.webkitRequestPointerLock;</div><div class="line">elem.requestPointerLock();</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pointerLockError</span><span class="params">()</span> </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"锁定指针时出错。"</span>);</div><div class="line">}</div></pre></figure>
+
+<p><a href="http://m.isux.us/touch_proj/h5api/Pointer-Events.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<p>若无法使用，可尝试加上事件前缀，譬如：</p>
+<figure class="highlight"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div></pre></figure>
+
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="vibration"></div>
+<p>目前主要是谷歌内核以及火狐浏览器支持。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="0cb35vploaioaea7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="4dwisukltio3w7bx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -507,14 +549,14 @@
 
 
   
-    <article id="post-web-notifications" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/web-notifications/" class="article-date">
+    <a href="/2014/12/29/vibration/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+    <a class="article-category-link" href="/categories/Media/">Media</a>
   </div>
 
   </div>
@@ -525,7 +567,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/web-notifications/">Web Notifications API</a>
+      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
     </h1>
   
 
@@ -534,46 +576,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>web notification 可以定时向客户端推送消息通知，比如Web OA中可以在用户的浏览器中的右下角弹出一个信息提示窗口，即时传达给用户相关通知等。</p>
+<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
 <h3 id="语法">语法</h3>
-<p>Methods(方法), Properties(属性), and Events(事件)</p>
-<h4 id="methods">methods</h4>
 <ul>
-<li>permission 获得授权状态<br>  Notification.permission会获得以下三个字符串之一：default, denied, granted。<br>  default 相当于“拒绝”，这表示用户没有选择网站给出的通知。<br>  denied 表示拒绝，这意味着用户不希望通知。<br>  granted 表示用户同意进行桌面通知。<br>  当 Notification.permission 获得 default 或者 denied 后，我们还可以使用 window.Notification.requestPermission(); 在用户下次进入此页面时再一次询问是否可以进行桌面通知。</li>
-<li>requestPermission() 请求用户授权</li>
-<li>close() 关闭通知</li>
+<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
+</li>
+<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
+</li>
 </ul>
-<h4 id="Properties">Properties</h4>
-<p>Notification(title, options)</p>
-<ul>
-<li>title 消息标题</li>
-<li>options JSON数据，有以下选项<br>  body 消息的主体内容，文本类型<br>  lang 消息文本的语言，其值必须符合的BCP47标准，如 en-US, zh-CN<br>  dir 消息文本的方向，有rtl &amp; ltr<br>  tag 设置消息的Tag归类，以便检索、替换、删除通知<br>  icon 消息窗口的ICON URL</li>
-</ul>
-<h4 id="Events">Events</h4>
-<ul>
-<li>onshow 对话框展示时触发</li>
-<li>onclick 当用户点击通知对话框时，触发</li>
-<li>onclose 当用户关闭对话框，或脚本调用close方法时，触发</li>
-<li>onerror 错误事件，目前来看一般只会接触到权限错误</li>
-</ul>
-<h4 id="支持检测">支持检测</h4>
-<figure class="highlight"><pre><div class="line"><span class="keyword">if</span> (<span class="string">'Notification'</span> <span class="keyword">in</span> window) {</div><div class="line"> <span class="regexp">//</span> <span class="constant">API</span> supported</div><div class="line">} <span class="keyword">else</span> {</div><div class="line"> <span class="regexp">//</span> <span class="constant">API</span> <span class="keyword">not</span> supported</div><div class="line">}</div></pre></figure>
-
-<h4 id="获取权限">获取权限</h4>
-<figure class="highlight"><pre><div class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.Notification.permission == <span class="string">"granted"</span>){</div><div class="line"> doing...</div><div class="line"> <span class="comment">// 浏览器已获得该页面的通知权限</span></div><div class="line">}<span class="keyword">else</span>{</div><div class="line"> <span class="built_in">window</span>.Notification.requestPermission();</div><div class="line"> <span class="comment">// 请求用户授权</span></div><div class="line">}</div></pre></figure>
-
-<h4 id="创建并发送">创建并发送</h4>
-<figure class="highlight"><pre><div class="line"><span class="comment">// 创建消息</span></div><div class="line"><span class="keyword">var</span> notification = <span class="keyword">new</span> Notification(<span class="string">'您有新的消息'</span>, {</div><div class="line"> body: <span class="string">'消息内容'</span>,</div><div class="line"> tag: <span class="string">'notice'</span>,</div><div class="line"> icon: <span class="string">'http://domain.com/icon.png'</span>,</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// 发送消息 </span></div><div class="line">notification.onshow = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line"> <span class="built_in">console</span>.log(<span class="string">'Notification shown'</span>);</div><div class="line"> setTimeout(notification.close(), <span class="number">1500</span>); <span class="comment">// 设置关闭时间</span></div><div class="line">};</div></pre></figure>
-
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">code</div></pre></figure><br><a href="demo url">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="Web%20Notifications"></div>
+<div class="caniuse" data-feature="vibration"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/web-notifications/" data-id="mbkhzo680tl226o9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="0cb35vploaioaea7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -651,7 +670,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -664,7 +683,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -674,6 +693,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/01/16/ORTC-for-WebRTC/">ORTC-for-WebRTC</a>
+          </li>
         
           <li>
             <a href="/2015/01/14/channel-messaging/">channel-messaging</a>
@@ -689,10 +712,6 @@
         
           <li>
             <a href="/2015/01/14/server-sent-event/">server-sent-event</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/13/svg/">SVG基本知识</a>
           </li>
         
       </ul>
@@ -722,7 +741,7 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">

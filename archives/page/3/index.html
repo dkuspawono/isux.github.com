@@ -21,7 +21,7 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
@@ -64,6 +64,61 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-contentEditable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/29/contentEditable/" class="article-date">
+  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Service-Workers/">Service Workers</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/29/contentEditable/">contentEditable</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>contentEditable 属性用来表明一个元素是否处于可编辑的状态</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line">&lt;element contentEditable=<span class="string">"value"</span>&gt;这是内容内容<span class="keyword">...</span>&lt;/element&gt;</div></pre></figure>
+
+<p>value 的值为：</p>
+<ul>
+<li>true 表示该元素可编辑.</li>
+<li>false 表示元素不可编辑.</li>
+<li>inherit 表示该元素继承了其父元素的可编辑状态.</li>
+</ul>
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line">&lt;div id=<span class="string">"demo-1"</span> class=<span class="string">"demo"</span> contentEditable=<span class="string">"true"</span>&gt;</div><div class="line">  &lt;h2&gt;contentEditable&lt;/h2&gt;</div><div class="line">  &lt;p&gt;默认是不可以编辑状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">  &lt;p&gt;请点击上面的按钮改变状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></figure><br><a href="http://m.isux.us/touch_proj/h5api/contenteditable.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="contentEditable"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/29/contentEditable/" data-id="88rxeynsnqlk17fu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-html-imports" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -130,14 +185,14 @@
 
 
   
-    <article id="post-device-orientation" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hashchange" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/device-orientation/" class="article-date">
+    <a href="/2014/12/29/hashchange/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
   </div>
 
   </div>
@@ -148,7 +203,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/device-orientation/">Device Orientation API</a>
+      <a class="article-title" href="/2014/12/29/hashchange/">hashchange</a>
     </h1>
   
 
@@ -157,38 +212,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Device Orientation API方便开发人员在移动端页面中确定用户当前如何使用手机，包括横竖屏，左右摇摆等。</p>
+<p>hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">orientationChange <span class="comment">//确定用户何时将设备由横向查看模式切换为纵向查看模式;</span></div><div class="line"></div><div class="line">MozOrientation <span class="comment">//兼容移动版 Firefox;</span></div><div class="line"></div><div class="line">deviceorientation <span class="comment">//加速度计检测到设备的方向发生变化时，用于告诉我们设备在空间上朝向哪儿;</span></div><div class="line"></div><div class="line">devicemotion <span class="comment">//deviceorientation 的超集，除了方向信息以外，还有加速度信息;</span></div></pre></figure>
+<figure class="highlight"><pre><div class="line">code</div></pre></figure>
 
 <h3 id="实例">实例</h3>
-<p><img src="/img/device.png" alt="device"><br>orientationchange 事件以及orientation对象属性，可以通过获取此值对用户操作进行反馈，比如横竖屏提示。当然实现此效果也可以用CSS媒体查询。</p>
-<figure class="highlight"><pre><div class="line">unction orientationChange(){</div><div class="line">            <span class="keyword">switch</span>(<span class="built_in">window</span>.orientation) {</div><div class="line">                <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// 移动设备正确摆放</span></div><div class="line">                <span class="keyword">case</span> <span class="number">180</span>: <span class="comment">// 移动设备倒立摆放</span></div><div class="line">                <span class="keyword">case</span> -<span class="number">90</span>: <span class="comment">// 表示向右旋转的横向模式</span></div><div class="line">                <span class="keyword">case</span> <span class="number">90</span>: <span class="comment">// 表示向左旋转的横向模式</span></div><div class="line">            }</div><div class="line">}</div><div class="line"><span class="comment">//orientationchange for ios , resize for android</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"onorientationchange"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">"orientationchange"</span> : <span class="string">"resize"</span>, orientationChange, <span class="literal">false</span>);</div></pre></figure>
-
-<p>deviceorientation 事件以及事件对象,其对象值的单位为deg，即移动设备旋转的角度。</p>
-<figure class="highlight"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">capture_orientation</span> <span class="params">(event)</span> </span>{</div><div class="line">         <span class="keyword">var</span> alpha = event.alpha;<span class="comment">//围绕Z轴旋转</span></div><div class="line">         <span class="keyword">var</span> beta = event.beta;<span class="comment">//围绕X轴旋转</span></div><div class="line">         <span class="keyword">var</span> gamma = event.gamma;<span class="comment">//围绕Y轴旋转</span></div><div class="line">}</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.DeviceOrientationEvent) {</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'deviceorientation'</span>, capture_orientation, <span class="literal">false</span>);</div><div class="line">}</div></pre></figure>
-
-<p>MozOrientation 事件 Firefox 移动浏览器上实现的检测设备方向的事件。静止状态下，x 值为 0，y 值为 0，z 值为 1。这几个值都介于1和-1之间。</p>
-<ul>
-<li>向右倾斜，x 会减少到 -1；向左倾斜，x 会增大到 1</li>
-<li>向远离用户方向倾斜，y 值会减少到 -1；向接近用户方向倾斜，y 值会增大到 1</li>
-</ul>
-<figure class="highlight"><pre><div class="line"><span class="comment">//针对 Android 版的 Firefox</span></div><div class="line"><span class="keyword">if</span> (!evt.gamma &amp;&amp; !evt.beta) {</div><div class="line">  evt.gamma = -(evt.x * (<span class="number">180</span> / <span class="built_in">Math</span>.PI));</div><div class="line">  evt.beta = (evt.y * (<span class="number">180</span> / <span class="built_in">Math</span>.PI));</div><div class="line">}</div></pre></figure>
-
-<p>devicemotion 事件<br>deviceorientation 的超集，除了方向信息以外，还有加速度信息。<br>acceleration: 一个包含 x，y，z 属性的对象，不考虑重力加速度的情况。<br>accelerationIncludingGravity: 考虑 z 轴自然重力加速的情况下，告诉你每个方向上的加速度。</p>
-<p><a href="http://m.isux.us/touch/h5api/Device-Orientation-Code.html" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="常见问题">常见问题</h3>
-<ul>
-<li>问题1</li>
-<li>问题2</li>
-</ul>
+<p><figure class="highlight"><pre><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">(window)</span> </span>{</div><div class="line"></div><div class="line">  <span class="comment">// 如果浏览器原生支持该事件,则退出  </span></div><div class="line"><span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) { <span class="keyword">return</span>; }</div><div class="line"></div><div class="line">  <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</div><div class="line">    oldURL = location.href,</div><div class="line">    oldHash = location.hash;</div><div class="line"></div><div class="line">  <span class="comment">// 每隔100ms检测一下location.hash是否发生变化</span></div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> newURL = location.href,</div><div class="line">      newHash = location.hash;</div><div class="line"></div><div class="line">    <span class="comment">// 如果hash发生了变化,且绑定了处理函数...</span></div><div class="line">    <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span> ) {</div><div class="line">      <span class="comment">// execute the handler</span></div><div class="line">      <span class="built_in">window</span>.onhashchange({</div><div class="line">        type: <span class="string">"hashchange"</span>,</div><div class="line">        oldURL: oldURL,</div><div class="line">        newURL: newURL</div><div class="line">      });</div><div class="line"></div><div class="line">      oldURL = newURL;</div><div class="line">      oldHash = newHash;</div><div class="line">    }</div><div class="line">  }, <span class="number">100</span>);</div><div class="line"></div><div class="line">})(<span class="built_in">window</span>);</div></pre></figure><br><a href="http://html5demos.com/dataset" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="Device"></div>
+<div class="caniuse" data-feature="hashchange"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/device-orientation/" data-id="mnxbfemt1lnaz6lj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="isyda49jvd1407no" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVG/">SVG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -224,7 +260,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +270,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/01/16/ORTC-for-WebRTC/">ORTC-for-WebRTC</a>
+          </li>
         
           <li>
             <a href="/2015/01/14/channel-messaging/">channel-messaging</a>
@@ -249,10 +289,6 @@
         
           <li>
             <a href="/2015/01/14/server-sent-event/">server-sent-event</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/13/svg/">SVG基本知识</a>
           </li>
         
       </ul>
@@ -282,7 +318,7 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
