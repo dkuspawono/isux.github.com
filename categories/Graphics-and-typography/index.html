@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: Graphics and typography | HTML5 API手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/categories/Graphics-and-typography/">
+<meta property="og:site_name" content="HTML5 API手册">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
+
+  
+    <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HTML5 API手册</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-svg-morphing-icon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/19/svg-morphing-icon/" class="article-date">
+  <time datetime="2015-01-19T01:33:41.000Z" itemprop="datePublished">Jan 19 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/19/svg-morphing-icon/">使用SVG来制作变形补间动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始之前，先来看看下面的示例：</p>
+<p><img src="https://d13yacurqjgara.cloudfront.net/users/38524/screenshots/1225455/icons-morphing.gif" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/bmiddle/72552fdbjw1en4k0xdfneg209s09x48n.gif" alt=""></p>
+<p>从上面到示例中可以看到，按钮两个状态之间的转换是有一个补间的过度效果，Google在他们新推出的设计规范material design中，大量使用了这种补间的动画效果。这种补间动画效果确实能使产品的体验更加的细腻。正所谓随风潜入夜，润物细无声。随着CSS3技术的发展以及浏览器变得越来越强劲，在web网页开发中补间动画应用也应用的越来越多。</p>
+<p>当然一些简单的补间动画使用css3种的transform也能实现，不过transform变换就那几种，局限也是比较大的。最好的实现其实使用svg来实现，下面我们就来看看怎样使用svg实现一个按钮的补间动画。</p>
+<p>动画是使用svg自带的SMIL动画技术来实现的，至于SMIL动画的一些基本介绍是啥，可以去上一篇文章有详细的介绍。</p>
+<h3 id="形状之间必须有相同的控制点">形状之间必须有相同的控制点</h3>
+<p>我们都知道，svg形状都是又不同控制点之间的路径构成的。而要实现图标之间的补间动画，图标需有相同的控制点，不然补间动画就无法实现。</p>
+<p>所以我们在设计图标的时候，最好是在一个单一的路径里面编辑。</p>
+<h2 id="SMIL来实现补间动画效果">SMIL来实现补间动画效果</h2>
+<h3 id="1、设计图标">1、设计图标</h3>
+<p>使用Adobe Illustrator等矢量设计软件设计我们需要的矢量图形。我们这个例子是要从一个<strong>星星</strong>图标和<strong>勾</strong>之间来做一个补间动画效果。下图是星星的形状：</p>
+<p><img src="http://cdn.css-tricks.com/wp-content/uploads/2014/10/2014-10-24-at-3.25-PM.png" alt=""></p>
+<p>设计完之后，拷贝这个星星的svg代码到一个新的文件中来设计下一个图标。这样就可以保证它们之间控制点的个数是相同的。</p>
+<h3 id="2、然后以上一个图标的坐标点为基础来变化为新的图标">2、然后以上一个图标的坐标点为基础来变化为新的图标</h3>
+<p>其实在矢量设计软件中，就是拖拽这些控制点来变化为各种形状，如下图所示的过程：</p>
+<p><img src="http://cdn.css-tricks.com/wp-content/uploads/2014/10/dfbbd.gif" alt=""></p>
+<p>最终变成了一个勾的形状：</p>
+<p><img src="http://cdn.css-tricks.com/wp-content/uploads/2014/10/2014-10-24-at-3.54-PM.png" alt=""></p>
+<h3 id="3、星星形状的svg代码">3、星星形状的svg代码</h3>
+<pre><code><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">viewBox</span>=<span class="value">"0 0 194.6 185.1"</span>&gt;</span>
+
+      <span class="tag">&lt;<span class="title">polygon</span> <span class="attribute">fill</span>=<span class="value">"#FFD41D"</span> <span class="attribute">points</span>=<span class="value">" ... shape 1 points ... "</span>&gt;</span>
+
+      <span class="tag">&lt;/<span class="title">polygon</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">svg</span>&gt;</span>
+</code></pre><h3 id="4、添加要运动的animate元素，指定要运动属性">4、添加要运动的<strong>animate</strong>元素，指定要运动属性</h3>
+<pre><code>&lt;svg <span class="variable">viewBox=</span><span class="string">"0 0 194.6 185.1"</span>&gt;
+
+      &lt;polygon <span class="variable">fill=</span><span class="string">"#FFD41D"</span> <span class="variable">points=</span><span class="string">" ... shape 1 points ... "</span>&gt;
+
+    &lt;animate <span class="variable">attributeName=</span><span class="string">"points"</span> <span class="variable">dur=</span><span class="string">"500ms"</span> <span class="variable">to=</span><span class="string">" ... shape 2 points ... "</span> /&gt;
+
+  &lt;/polygon&gt;
+
+&lt;/svg&gt;
+</code></pre><p>这里制定的动画效果是在网页加载的时候就会运行的，所以我们要使用一点点js来控制动画的状态。</p>
+<h3 id="5、给动画效果绑定点击事件来触发动画效果">5、给动画效果绑定点击事件来触发动画效果</h3>
+<p>SMIL也支持诸如点击和鼠标滑过等事件，所以我们可以指定在点击的时候才触发动画效果：</p>
+<pre><code>&lt;polygon <span class="variable">id=</span><span class="string">"shape"</span> <span class="variable">points=</span><span class="string">" ... shape 1 points ... "</span>&gt;
+
+   &lt;animate <span class="variable">begin=</span><span class="string">"shape.click"</span> <span class="variable">attributeName=</span><span class="string">"points"</span> <span class="variable">dur=</span><span class="string">"500ms"</span> <span class="variable">to=</span><span class="string">" ... shape 2     points ... /&gt;
+
+&lt;/polygon&gt;</span>
+</code></pre><p>上面的代码也有它的局限性，你只能在点击svg的时候，才触发动画效果。不过这里的svg是按钮的一部分，我们是希望在点击按钮的时候就触发svg的动画效果。</p>
+<p>我们可以直接给<strong>animate</strong>元素一个ID，使用javascript很容易对它进行控制：</p>
+<pre><code>&lt;animate id=<span class="string">"animation-to-check"</span> begin=<span class="string">"indefinite"</span> <span class="keyword">...</span> /&gt;
+</code></pre><p>结合SMIL提供的<strong>beginElement()</strong>方法(beginElement()方法是执行animate元素中所定义的动画方法)。</p>
+<pre><code>animationToCheck = <span class="built_in">document</span>.getElementById(<span class="string">"animation-to-check"</span>);
+
+<span class="comment">// 点击就会触发ID为animation-to-check中定义的动画效果</span>
+animationToCheck.beginElement();
+</code></pre><h3 id="最终效果">最终效果</h3>
+<p>上面知识就这个动画效果的一个原理做了一个简单的分析。其实真正要实现这个星星到勾的补间动画，我们需要定义四个动画效果。一个是星星变勾的，一个是颜色的变化。还有它们互相切换的动画效果，详细的代码可以在下面中的demo中查看。</p>
+<p>如下所示：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="MYpNdo" data-default-tab="result" data-user="janily" class="codepen">See the Pen <a href="http://codepen.io/janily/pen/MYpNdo/" target="_blank" rel="external">Shape Morph Button</a> by janily (<a href="http://codepen.io/janily" target="_blank" rel="external">@janily</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><a href="http://css-tricks.com/svg-shape-morphing-works/" target="_blank" rel="external">原文地址</a></p>
+<p>推荐阅读</p>
+<p><a href="http://css-tricks.com/guide-svg-animations-smil/" target="_blank" rel="external">A Guide to SVG Animations</a><br><a href="http://css-tricks.com/svg-line-animation-works/" target="_blank" rel="external">How SVG Line Animation Works</a><br><a href="http://css-tricks.com/svg-animation-on-css-transforms/" target="_blank" rel="external">SVG Animation and CSS Transforms: A Complicated Love Story</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/19/svg-morphing-icon/" data-id="fu0c35ri6esr0ews" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-svg-animate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/18/svg-animate/" class="article-date">
+  <time datetime="2015-01-18T07:45:41.000Z" itemprop="datePublished">Jan 18 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始之前，先来看一张图：</p>
+<p><img src="http://oak.is/assets/animated-svg-ff.svg" alt=""></p>
+<p>这张图是<a href="http://sprout.is/" target="_blank" rel="external">Sprout</a>网站上的。以前是用gif格式的图片，而使用svg格式的图片代替了gif之后，体积大大减小从1.6mb减少到389kb，加载时间从8.75s减少到412ms。这完全是一个天上地下的感觉。</p>
+<p>下面我们将以一个简单的例子来一步步学习svg动画的技术原理。掌握这些原理后，你也能创建属于自己的动画效果。</p>
+<pre><code><span class="tag">&lt;<span class="title">circle</span> /&gt;</span>
+</code></pre><p>由于要创建动画效果，所以需要把动画元素即<strong>animate</strong>放置在<strong>circle</strong>元素里面：</p>
+<pre><code><span class="tag">&lt;<span class="title">circle</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">animate</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">circle</span>&gt;</span>
+</code></pre><p>我们先个圆形定义像诸如填充、边框等基本的样式。如下所示：</p>
+<pre><code>&lt;circle <span class="variable">fill=</span><span class="string">"#FFFFFF"</span> <span class="variable">stroke=</span><span class="string">"#B450FF"</span> <span class="variable">stroke-width=</span><span class="string">"6"</span> <span class="variable">stroke-miterlimit=</span><span class="string">"10"</span> <span class="variable">cx=</span><span class="string">"153"</span> <span class="variable">cy=</span><span class="string">"127"</span> <span class="variable">r=</span><span class="string">"6"</span>&gt;
+    &lt;animate /&gt;
+&lt;/circle&gt;
+</code></pre><h3 id="选择需要运动的属性">选择需要运动的属性</h3>
+<p><strong>attributeName</strong>是用来指定需要变化的属性名称。① 可以是元素直接暴露的属性，如元素的位置<strong>cx</strong>,或者是<strong>cy</strong>等 ② 可以是CSS属性。例如，透明度(opacity)、边框的宽度(stroke-width)、宽度(width)或者是其它的属性。这里我们选择的属性是<strong>cy</strong>也就是圆在y轴上的位置：</p>
+<pre><code><span class="variable">attributeName=</span><span class="string">"cy"</span>
+</code></pre><h3 id="From和To">From和To</h3>
+<p>使用<strong>from</strong>和<strong>to</strong>属性来告诉图形从哪开始以及到哪结束。比如这里指定<strong>from</strong>和<strong>to</strong>的值都是一样的：</p>
+<pre><code><span class="variable">from=</span><span class="string">"127"</span>
+<span class="variable">to=</span><span class="string">"127"</span>
+</code></pre><h3 id="设置动画运动的时间">设置动画运动的时间</h3>
+<p>动画之所以为动画，其实就是在不同的时间段做不同的事情。所以要制作一个动画效果，时间是必不可少的。在svg的动画属性中，有<strong>begin</strong>和<strong>dur</strong>两个。<strong>begin</strong>指动画开始的时间，一个动画效果必然是从0开始运动，所以一般<strong>begin</strong>的值都是为0；而<strong>dur</strong>则是指定动画所需要的时间。而当begin的值为”indefinite”的时候，表示“无限等待”。需要beginElement()方法触发或者指向该动画元素的超链接来触发动画效果。</p>
+<pre><code><span class="variable">begin=</span><span class="string">"0s"</span>
+<span class="variable">dur=</span><span class="string">"4s"</span>
+</code></pre><h3 id="设置Values">设置Values</h3>
+<p><strong>value</strong>值是把需要运动属性的变化的值定义为一个集合并且用分号分隔开。</p>
+<p>当在<strong>animate</strong>元素中同时使用了<strong>value</strong>和<strong>from,to</strong>的时候，<strong>animate</strong>会自动忽视<strong>from,to</strong>的值，而使用<strong>value</strong>属性的值。这里主要是使用来三个数值127，117，90，并且重复使用它们。从而使圆形产生暂停的效果。</p>
+<pre><code><span class="built_in">values</span>=<span class="string">"127;117;117;90;90;127;127"</span>
+</code></pre><p>这里注意一下，最后的数字和开始的数字使相等的。这样可以使图形回到开始运动的地方。</p>
+<p>使用重复的值是一种常用的动画技术。</p>
+<h3 id="calcMode">calcMode</h3>
+<p>定义了动画插值的方式：discrete:离散的，不插值；linear：线性插值；paced：步长插值；spline:样条插值。默认是linear(线性插值)，但是如果属性不支持线性插值，则会采用discrete插值方式。</p>
+<h3 id="Easing和transition">Easing和transition</h3>
+<p><strong>KeySplines</strong>这个属性定义了样条插值(贝塞尔插值)时的控制点，显然只有在插值模式选择为spline才起作用。这个列表中的值取值范围是0到1。贝塞尔曲线是做高级动画效果必备的一个东东，具体的详细的解释有点点复杂。这里推荐去这个网址了解贝塞尔曲线具体的效果<a href="http://cubic-bezier.com/#.1,.8,.2,1" target="_blank" rel="external">cubic Bézier easing</a>，还有这个网站而已非常不错<a href="http://easings.net/zh-cn" target="_blank" rel="external">http://easings.net/zh-cn</a>。</p>
+<pre><code>keySplines=<span class="string">"</span>
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span><span class="string">" </span>
+</code></pre><p>上面代码中的每一行的四个值代表绘制曲线的控制点。还是来看图吧，一图胜千言：</p>
+<p><img src="http://oak.is/assets/keysplines-ff.svg" alt=""></p>
+<p>如果不使用过渡效果，动画效果看起来就很僵硬不自然；而使用过渡，动画效果就会符合自然世界中的动力学原理，看起来也更真实和自然。</p>
+<p><img src="http://oak.is/assets/ease-ff.svg" alt=""></p>
+<p>keySplines的值是在0和1之间的数字。下面是一个弹起的效果，keySplines的值是0.4 1.6 0.8 0.8。(在Webkit内核的浏览器中运行的很好，但是在Firefox中有点问题。)</p>
+<p><img src="http://oak.is/assets/ease.svg" alt=""></p>
+<h3 id="keyTimes">keyTimes</h3>
+<p>定义了以分号分隔的动画关键帧的时间列表。这个和values是一一对应的。这个值是受插值算法影响的，如果是线性(linear)和样条插值(spline)，则keyTimes的第一个值必须是0，最后一个值必须是1。对于离散(discrete)的不插值的方式，keyTimes的第一个值必须是0。对于步长插值方式，很显然是不需要keyTimes。而且如果动画的持续时间设置为indefinite，则忽略keyTimes。</p>
+<pre><code><span class="variable">keyTimes=</span><span class="string">"0;0.22;0.33;0.55;0.66;0.88;1"</span> 
+</code></pre><p><img src="http://oak.is/assets/values-keytimes.svg" alt=""></p>
+<p>使用keyTimes和values来制作动画效果，可以使动画效果看起来更自然舒服。</p>
+<h3 id="动画重复">动画重复</h3>
+<p>repeatCount是用来设置动画重复的次数。 indefinite代表无限重复。</p>
+<pre><code>repeatCount=<span class="string">"indefinite"</span>
+/&gt;
+<span class="variable">&lt;/circle&gt;</span>
+</code></pre><p>至此，一个简单的动画效果就制作完成来。</p>
+<p>最终代码如下所示：</p>
+<pre><code>&lt;circle <span class="variable">fill=</span><span class="string">"#FFFFFF"</span> <span class="variable">stroke=</span><span class="string">"#B450FF"</span> <span class="variable">stroke-width=</span><span class="string">"6"</span> <span class="variable">stroke-miterlimit=</span><span class="string">"10"</span> <span class="variable">cx=</span><span class="string">"153"</span> <span class="variable">cy=</span><span class="string">"127"</span> <span class="variable">r=</span><span class="string">"6"</span>&gt;
+&lt;animate
+    <span class="variable">attributeName=</span><span class="string">"cy"</span>
+    <span class="variable">from=</span><span class="string">"127"</span>
+    <span class="variable">to=</span><span class="string">"127"</span>
+    <span class="variable">begin=</span><span class="string">"0s"</span>
+    <span class="variable">dur=</span><span class="string">"4s"</span>
+    <span class="variable">values=</span><span class="string">"127;117;117;90;90;127;127"</span>
+    <span class="variable">keySplines=</span><span class="string">"
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1"</span> 
+    <span class="variable">keyTimes=</span><span class="string">"
+        0;0.22;0.33;0.55;0.66;0.88;1"</span> 
+    <span class="variable">calcMode=</span><span class="string">"spline"</span>
+    <span class="variable">repeatCount=</span><span class="string">"indefinite"</span>
+/&gt;
+&lt;/circle&gt;
+</code></pre><p>实际运行效果：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="xbdVPm" data-default-tab="result" data-user="janily" class="codepen">See the Pen <a href="http://codepen.io/janily/pen/xbdVPm/" target="_blank" rel="external">xbdVPm</a> by janily (<a href="http://codepen.io/janily" target="_blank" rel="external">@janily</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>再回到文章开始的那个动画效果，使用的原理跟我们这个圆的动画是一样的。对于圆，我们是通过改变它的<strong>cy</strong>的值来做的。而线段，也可以通过改变它的<strong>y1</strong>和<strong>y2</strong>的值来制作动画效果。</p>
+<p>使用svg代替gif来制作动画效果，可以大大减少页面的体积以及加载时间。最终完成的效果只有15kb。当然，也可以配合一些javascript的库来制作svg动画效果。不过对于一些不是很复杂的动画来说，并没有必要这样做，相对于利用svg本身的动画属性来说它不够轻量简洁。</p>
+<p><img src="http://oak.is/assets/animated-svg-ff.svg" alt=""></p>
+<p>下面是SVG中的SMIL动画的兼容性，可以看到IE平台是全部覆灭，还好现在在移动端windows平台不是很多，几乎可以忽略：</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="svg-smil"></div>
+
+<p>下面推荐一些关于svg动画的资源：</p>
+<p><a href="http://www.w3.org/TR/SVG/animate.html" target="_blank" rel="external">SVG Animate element spec</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL" target="_blank" rel="external">Mozilla: SVG animation with SMIL</a></p>
+<p><a href="http://caniuse.com/svg" target="_blank" rel="external">Can I Use: SVGs</a></p>
+<p><a href="http://caniuse.com/#feat=svg-smil" target="_blank" rel="external">Can I Use: SVG SMIL Animation</a></p>
+<p><a href="http://oak.is/thinking/animated-svgs/" target="_blank" rel="external">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/18/svg-animate/" data-id="6wyusos3wx1tpl6j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MathML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/16/MathML/" class="article-date">
+  <time datetime="2015-01-16T09:05:06.000Z" itemprop="datePublished">Jan 16 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/16/MathML/">MathML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>数学标记语言（Mathematical Markup Language，MathML），是一种基于XML的标准，用来在互联网上书写数学符号和公式的标记语言，有了它就可以实现复杂的数学公式在HTML中展示。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line">类似xml，MathML也通过math标记加在html中：</div><div class="line"><span class="tag">&lt;<span class="title">math</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1998/Math/MathML"</span>&gt;</span>//语法内容<span class="tag">&lt;/<span class="title">math</span>&gt;</span></div><div class="line"></div><div class="line">所有的math标签都带有m的前缀，例如：</div><div class="line">（1）几号元素</div><div class="line"><span class="tag">&lt;<span class="title">mi</span>&gt;</span>x<span class="tag">&lt;/<span class="title">mi</span>&gt;</span>，标识符；</div><div class="line"><span class="tag">&lt;<span class="title">mo</span>&gt;</span>x<span class="tag">&lt;/<span class="title">mo</span>&gt;</span>，操作符；</div><div class="line"><span class="tag">&lt;<span class="title">mn</span>&gt;</span>x<span class="tag">&lt;/<span class="title">mn</span>&gt;</span>，数字；</div><div class="line"><span class="tag">&lt;<span class="title">mtext</span>&gt;</span>non zeo<span class="tag">&lt;/<span class="title">mtext</span>&gt;</span>文本。</div><div class="line"></div><div class="line">（2）布局元素</div><div class="line"><span class="tag">&lt;<span class="title">mrow</span>&gt;</span>水平的一行；</div><div class="line"><span class="tag">&lt;<span class="title">mup</span>&gt;</span>、<span class="tag">&lt;<span class="title">munderover</span>&gt;</span>上标、下标等；</div><div class="line"><span class="tag">&lt;<span class="title">mfrac</span>&gt;</span>分数；</div><div class="line"><span class="tag">&lt;<span class="title">msqrt</span>&gt;</span>、<span class="tag">&lt;<span class="title">mroot</span>&gt;</span>平方，方根；</div><div class="line"><span class="tag">&lt;<span class="title">mfenced</span>&gt;</span>括号等。</div><div class="line"></div><div class="line">但目前浏览器支持度不足，详细语法参考：http://www.w3.org/Math/</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<figure class="highlight"><pre><div class="line">//x = (-b +- sqrt(b^2 – 4ac)) / (2a)</div><div class="line"><span class="tag">&lt;<span class="title">math</span> <span class="attribute">mode</span>=<span class="value">"display"</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1998/Math/MathML"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">mrow</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">mi</span>&gt;</span>x<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">mo</span>&gt;</span>=<span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">mfrac</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="title">mrow</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mo</span> <span class="attribute">form</span>=<span class="value">"prefix"</span>&gt;</span>&amp;#x2212;<span class="comment">&lt;!-- − --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mi</span>&gt;</span>b<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mo</span>&gt;</span>&amp;#x00B1;<span class="comment">&lt;!-- &amp;PlusMinus; --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">msqrt</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">msup</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="title">mi</span>&gt;</span>b<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="title">mn</span>&gt;</span>2<span class="tag">&lt;/<span class="title">mn</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="title">msup</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mo</span>&gt;</span>&amp;#x2212;<span class="comment">&lt;!-- − --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mn</span>&gt;</span>4<span class="tag">&lt;/<span class="title">mn</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mo</span>&gt;</span>&amp;#x2062;<span class="comment">&lt;!-- &amp;InvisibleTimes; --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mi</span>&gt;</span>a<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mo</span>&gt;</span>&amp;#x2062;<span class="comment">&lt;!-- &amp;InvisibleTimes; --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="title">mi</span>&gt;</span>c<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="title">msqrt</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="title">mrow</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="title">mrow</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mn</span>&gt;</span>2<span class="tag">&lt;/<span class="title">mn</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mo</span>&gt;</span>&amp;#x2062;<span class="comment">&lt;!-- &amp;InvisibleTimes; --&gt;</span><span class="tag">&lt;/<span class="title">mo</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">mi</span>&gt;</span>a<span class="tag">&lt;/<span class="title">mi</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="title">mrow</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="title">mfrac</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">mrow</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">annotation</span> <span class="attribute">encoding</span>=<span class="value">"TeX"</span>&gt;</span></div><div class="line">     x=\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</div><div class="line">  <span class="tag">&lt;/<span class="title">annotation</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">annotation</span> <span class="attribute">encoding</span>=<span class="value">"StarMath 5.0"</span>&gt;</span></div><div class="line">     x={-b plusminus sqrt {b^2 - 4 ac}} over {2 a}</div><div class="line">  <span class="tag">&lt;/<span class="title">annotation</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">math</span>&gt;</span></div></pre></figure>
+
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="mathml"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/16/MathML/" data-id="6djr4nt4g882rbku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-woff" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/16/woff/" class="article-date">
+  <time datetime="2015-01-16T08:24:06.000Z" itemprop="datePublished">Jan 16 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/16/woff/">woff</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>WOFF（Web Open Font Format）是一种新型字体，由于它体积相对于TTF（TrueType）和OpenType（OTF）更小，因此被广泛支持。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line">//使用<span class="variable">@font</span>-face</div><div class="line"><span class="variable">@font</span>-face {</div><div class="line">     font-family: fontname; src: url(<span class="keyword">link</span>/to/the/font/fontname.woff) <span class="keyword">format</span>(<span class="string">"woff”);</span></div><div class="line">}</div><div class="line">body {</div><div class="line">     font-family: fontname, Times, Times New Roman, serif;</div><div class="line">}</div><div class="line"></div><div class="line">//WOFF还可以用上FIREFOX的属性text-rendering来控制渲染方式：</div><div class="line">auto，自动猜测渲染速度、可读性还是精准度；</div><div class="line">optimizeSpeed，优化速度；</div><div class="line">optimizeLegibility，优化可读性；</div><div class="line">geometricPrecision，优化精准度。</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="variable">@font</span>-face {</div><div class="line">     font-family: fontname; src: url(<span class="keyword">link</span>/to/the/font/fontname.woff) <span class="keyword">format</span>(<span class="string">"woff”);</span></div><div class="line">}</div><div class="line">body {</div><div class="line">     font-family: fontname, Times, Times New Roman, serif;</div><div class="line">     text-rendering: optimizeLegibility;</div><div class="line">}</div></pre></figure><br><a href="http://m.isux.us/h5api/woff.html" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="常见问题">常见问题</h3>
+<p>目前只有Gecko(Firefox)支持text-rendering属性。</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="woff"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/16/woff/" data-id="qhd729nledbxbigd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-svg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/13/svg/" class="article-date">
+  <time datetime="2015-01-13T13:01:41.000Z" itemprop="datePublished">Jan 13 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/13/svg/">SVG基本知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述">概述</h3>
+<p>可缩放矢量图形(Scalable Vector Graphics，简称SVG)是一种使用XML来描述二维图形的语言(SVG严格遵从XML语法)。 SVG允许三种类型的图形对象：矢量图形形状（例如由直线和曲线组成的路径）、图像和文本。 可以将图形对象（包括文本）分组、样式化、转换和组合到以前呈现的对象中。SVG功能集包括嵌套转换、剪切路径、alpha 蒙板和模板对象，并且也支持使用CSS来定义SVG的相关属性。</p>
+<p>SVG绘图是交互式和动态的。 例如，可使用脚本来定义和触发动画。这一点与Flash相比很强大。并且SVG是文本文件，动态操作是相当容易的。还提供了完成动画的相关元素，操作起来非常方便。</p>
+<p>SVG与其他Web标准兼容，并直接支持文档对象模型DOM。这一点也是与HTML5中的canvas相比很强大的地方。因而，可以很方便的使用脚本实现SVG的很多高级应用。而且SVG的图形元素基本上都支持DOM中的标准事件。可将大量事件处理程序分配给任何SVG图形对象。虽然SVG的渲染速度比不上canvas元素，但是胜在DOM操作很灵活，这个优势完全可以弥补速度上的劣势。</p>
+<h3 id="SVG基本的使用方法">SVG基本的使用方法</h3>
+<h4 id="在img标签里应用SVG图片">在img标签里应用SVG图片</h4>
+<p>可以直接在img标签里，导入你的SVG文件。</p>
+<figure class="highlight"><pre><div class="line">&lt;img <span class="variable">src=</span><span class="string">"kiwi.svg"</span> <span class="variable">alt=</span><span class="string">"图片的title"</span>&gt;  //就像引入其它像jpg、png格式图片的使用方法一样</div></pre></figure>
+
+<h5 id="实例">实例</h5>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="dpjFb" data-default-tab="result" data-user="janily" class="codepen">See the Pen <a href="http://codepen.io/janily/pen/dpjFb/" target="_blank" rel="external">dpjFb</a> by janily (<a href="http://codepen.io/janily" target="_blank" rel="external">@janily</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="使用SVG作为背景图片">使用SVG作为背景图片</h4>
+<p>定义SVG图片为背景图片也很简单，直接在CSS里定义背景图片就可以了。</p>
+<figure class="highlight"><pre><div class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/"</span> <span class="attribute">class</span>=<span class="value">"logo"</span>&gt;</span></div><div class="line">    Kiwi Corp</div><div class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></div><div class="line"></div><div class="line">.logo {</div><div class="line">  display: block;</div><div class="line">  text-indent: -9999px;</div><div class="line">  width: 100px;</div><div class="line">  height: 82px;</div><div class="line">  background: url(kiwi.svg);</div><div class="line">  background-size: 100px 82px;</div><div class="line">}</div></pre></figure>
+
+<p>这里的CSS我们用了一个很常见的CSS技巧，以图换字，用图片来代替文字。如果不知道实际SVG图片的大小，可以使用background-size来定义背景图片的大小。</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="svg-css"></div>
+
+<h4 id="把SVG作为DOM节点直接插入html文件">把SVG作为DOM节点直接插入html文件</h4>
+<figure class="highlight"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;svg <span class="variable">xmlns=</span><span class="string">"http://www.w3.org/2000/svg"</span> xmlns:<span class="variable">xlink=</span><span class="string">"http://www.w3.org/1999/xlink"</span> <span class="variable">version=</span><span class="string">"1.1"</span> <span class="variable">id=</span><span class="string">"Layer_1"</span> <span class="variable">x=</span><span class="string">"0px"</span> <span class="variable">y=</span><span class="string">"0px"</span> <span class="variable">width=</span><span class="string">"612px"</span> <span class="variable">height=</span><span class="string">"502.174px"</span> <span class="variable">viewBox=</span><span class="string">"0 65.326 612 502.174"</span> <span class="variable">enable-background=</span><span class="string">"new 0 65.326 612 502.174"</span> xml:<span class="variable">space=</span><span class="string">"preserve"</span>&gt;</div><div class="line">    &lt;ellipse <span class="variable">fill=</span><span class="string">"#C6C6C6"</span> <span class="variable">cx=</span><span class="string">"283.5"</span> <span class="variable">cy=</span><span class="string">"487.5"</span> <span class="variable">rx=</span><span class="string">"259"</span> <span class="variable">ry=</span><span class="string">"80"</span>/&gt;</div><div class="line">    &lt;path <span class="variable">id=</span><span class="string">"bird"</span> <span class="variable">d=</span><span class="string">"M210.333,65.331C104.367,66.105-12.349,150.637,1.056,276.449c4.303,40.393,18.533,63.704,52.171,79.03  c36.307,16.544,57.022,54.556,50.406,112.954c-9.935,4.88-17.405,11.031-19.132,20.015c7.531-0.17,14.943-0.312,22.59,4.341  c20.333,12.375,31.296,27.363,42.979,51.72c1.714,3.572,8.192,2.849,8.312-3.078c0.17-8.467-1.856-17.454-5.226-26.933  c-2.955-8.313,3.059-7.985,6.917-6.106c6.399,3.115,16.334,9.43,30.39,13.098c5.392,1.407,5.995-3.877,5.224-6.991  c-1.864-7.522-11.009-10.862-24.519-19.229c-4.82-2.984-0.927-9.736,5.168-8.351l20.234,2.415c3.359,0.763,4.555-6.114,0.882-7.875  c-14.198-6.804-28.897-10.098-53.864-7.799c-11.617-29.265-29.811-61.617-15.674-81.681c12.639-17.938,31.216-20.74,39.147,43.489  c-5.002,3.107-11.215,5.031-11.332,13.024c7.201-2.845,11.207-1.399,14.791,0c17.912,6.998,35.462,21.826,52.982,37.309  c3.739,3.303,8.413-1.718,6.991-6.034c-2.138-6.494-8.053-10.659-14.791-20.016c-3.239-4.495,5.03-7.045,10.886-6.876  c13.849,0.396,22.886,8.268,35.177,11.218c4.483,1.076,9.741-1.964,6.917-6.917c-3.472-6.085-13.015-9.124-19.18-13.413  c-4.357-3.029-3.025-7.132,2.697-6.602c3.905,0.361,8.478,2.271,13.908,1.767c9.946-0.925,7.717-7.169-0.883-9.566  c-19.036-5.304-39.891-6.311-61.665-5.225c-43.837-8.358-31.554-84.887,0-90.363c29.571-5.132,62.966-13.339,99.928-32.156  c32.668-5.429,64.835-12.446,92.939-33.85c48.106-14.469,111.903,16.113,204.241,149.695c3.926,5.681,15.819,9.94,9.524-6.351  c-15.893-41.125-68.176-93.328-92.13-132.085c-24.581-39.774-14.34-61.243-39.957-91.247  c-21.326-24.978-47.502-25.803-77.339-17.365c-23.461,6.634-39.234-7.117-52.98-31.273C318.42,87.525,265.838,64.927,210.333,65.331  z M445.731,203.01c6.12,0,11.112,4.919,11.112,11.038c0,6.119-4.994,11.111-11.112,11.111s-11.038-4.994-11.038-11.111  C434.693,207.929,439.613,203.01,445.731,203.01z"</span>/&gt;</div><div class="line">&lt;/svg&gt;</div><div class="line">&lt;/body&gt;</div></pre></figure>
+
+<h3 id="实例-1">实例</h3>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="LyGtJ" data-default-tab="result" data-user="janily" class="codepen">See the Pen <a href="http://codepen.io/janily/pen/LyGtJ/" target="_blank" rel="external">SVG with Filters</a> by janily (<a href="http://codepen.io/janily" target="_blank" rel="external">@janily</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="使用object方法来插入SVG图片">使用object方法来插入SVG图片</h4>
+<figure class="highlight"><pre><div class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span> <span class="tag">&lt;<span class="title">html</span>&gt;</span> <span class="tag">&lt;<span class="title">head</span>&gt;</span> <span class="tag">&lt;<span class="title">title</span>&gt;</span> My First SVG Page<span class="tag">&lt;/<span class="title">title</span>&gt;</span> <span class="tag">&lt;/<span class="title">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="title">object</span> <span class="attribute">data</span>=<span class="value">"sun.svg"</span> <span class="attribute">type</span>=<span class="value">"image/svg+xml"</span> <span class="attribute">width</span>=<span class="value">"300px"</span> <span class="attribute">height</span>=<span class="value">"300px"</span>&gt;</span>        </div><div class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Your browser does not support SVG - please upgrade to a modern browser.<span class="tag">&lt;/<span class="title">p</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="title">object</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></figure>
+
+<h3 id="兼容性-1">兼容性</h3>
+<div class="caniuse" data-feature="svg"></div>
+
+<h4 id="降级使用SVG">降级使用SVG</h4>
+<p>对于不支持SVG的浏览器，我们可以采用降级的方式来对待它。不支持SVG，我们可以使用jpg或者是png格式的图片来代替，这里推荐<a href="http://modernizr.com/" target="_blank" rel="external">Modernizr</a>这个库来检查浏览器的特性。对于不支持SVG的浏览器，Modernizr就会生成一个no-svg的类，这样我们就可以很容易处理不支持SVG的情况了，如下代码所示：</p>
+<figure class="highlight"><pre><div class="line"><span class="class">.main-header</span> <span class="rules">{</span></div><div class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(logo.svg) no-repeat top left</span></span>;</div><div class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> contain</span></span>;</div><div class="line"><span class="rule">}</span></div><div class="line"></div><div class="line"><span class="class">.no-svg</span> <span class="class">.main-header</span> <span class="rules">{</span></div><div class="line">  <span class="rule"><span class="attribute">background-image</span>:<span class="value"> <span class="function">url</span>(logo.png)</span></span>;</div><div class="line"><span class="rule">}</span></div></pre></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/13/svg/" data-id="6xqjvjk0v6qregrm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/19/svg-morphing-icon/">使用SVG来制作变形补间动画</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/MathML/">MathML</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/woff/">woff</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 timezhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script src="/js/caniuse.min.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

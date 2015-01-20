@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: Storage and Files | HTML5 API手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/categories/Storage-and-Files/">
+<meta property="og:site_name" content="HTML5 API手册">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
+
+  
+    <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HTML5 API手册</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Blob-URLs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/20/Blob-URLs/" class="article-date">
+  <time datetime="2015-01-20T02:33:32.000Z" itemprop="datePublished">Jan 20 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Storage-and-Files/">Storage and Files</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>Blob URLs与Data URLs的用途相似，都是用来存储数据源信息，不过Blob URL的出现使得客户端和服务器端的交互更加简单，比如图片预览：使用Blob URL就不需要现将图片上传到服务端，服务端再返回缩略图，可以直接在选取好图片后在页面上展现给用户看。</p>
+<p>Blob URL也可以称作”Object URL”，它的形式是<em>blob:http%3A//www.darkthread.net/c94d498b-7818-49b3-8e79-d3959938ba0f</em>这样的，也就是”blob:”+网址+GUID的形式。可以理解成为在<em><a href="http://www.darkthread.net/" target="_blank" rel="external">http://www.darkthread.net/</a></em> 获取<em>c94d498b-7818-49b3-8e79-d3959938ba0f</em> 这样的资源，不过这个获取资源的过程不需要发出HTTP请求，而直接将存在浏览器中二进制数据提取出。</p>
+<p>在使用Data URLs时可能遇到存储数据太大了，导致IE无法解析出其中的内容，这个情况在Blob URLs中不会发生，可以说Blob URLs更适合存储较大的文件。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> blobUrl = URL.createObjectURL(<span class="keyword">new</span> Blob([<span class="symbol">'Tes</span>t'], {<span class="keyword">type</span>: <span class="symbol">'text</span>/plain'}));</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<ol>
+<li><p>图片上传后可展现缩略图代码：<br><figure class="highlight"><pre><div class="line"><span class="built_in">window</span>.URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fileSelect = <span class="built_in">document</span>.getElementById(<span class="string">"fileSelect"</span>),</div><div class="line">    fileElem = <span class="built_in">document</span>.getElementById(<span class="string">"fileElem"</span>),</div><div class="line">    fileList = <span class="built_in">document</span>.getElementById(<span class="string">"fileList"</span>);</div><div class="line"></div><div class="line">fileSelect.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">  <span class="keyword">if</span> (fileElem) {</div><div class="line">    fileElem.click();</div><div class="line">  }</div><div class="line">  e.preventDefault(); <span class="comment">// prevent navigation to "#"</span></div><div class="line">}, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFiles</span><span class="params">(files)</span> </span>{</div><div class="line">  <span class="keyword">if</span> (!files.length) {</div><div class="line">    fileList.innerHTML = <span class="string">"&lt;p&gt;No files selected!&lt;/p&gt;"</span>;</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    <span class="keyword">var</span> list = <span class="built_in">document</span>.createElement(<span class="string">"ul"</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; files.length; i++) {</div><div class="line">      <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">      list.appendChild(li);</div><div class="line">      </div><div class="line">      <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">	  <span class="comment">// 通过Object URL得到图片</span></div><div class="line">      img.src = <span class="built_in">window</span>.URL.createObjectURL(files[i]);</div><div class="line">      img.height = <span class="number">60</span>;</div><div class="line">      img.onload = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>{</div><div class="line">		<span class="comment">// 当img.src已经赋值了，就不需要Object URL再工作了，所以将它release</span></div><div class="line">        <span class="built_in">window</span>.URL.revokeObjectURL(<span class="keyword">this</span>.src);</div><div class="line">      }</div><div class="line">      li.appendChild(img);</div><div class="line">      </div><div class="line">      <span class="keyword">var</span> info = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</div><div class="line">      info.innerHTML = files[i].name + <span class="string">": "</span> + files[i].size + <span class="string">" bytes"</span>;</div><div class="line">      li.appendChild(info);</div><div class="line">    }</div><div class="line">    fileList.appendChild(list);</div><div class="line">  }</div><div class="line">}</div></pre></figure><br><a href="https://developer.mozilla.org/samples/domref/file-click-demo.html" target="_blank" rel="external">查看DEMO</a></p>
+</li>
+<li><p>获取textarea内容，保存为TXT文档<br><figure class="highlight"><pre><div class="line">$(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">  <span class="keyword">var</span> $link = $(<span class="string">"#aDownload"</span>);</div><div class="line">  $(<span class="string">'#btnGenFile'</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// 创建下载链接，src为Object URL</span></div><div class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([$(<span class="string">"#taText"</span>).text()], { type:<span class="string">"application/octect-stream"</span> });</div><div class="line">    <span class="keyword">var</span> blobUrl = URL.createObjectURL(blob);</div><div class="line">    <span class="keyword">var</span> fileName = <span class="string">"words.txt"</span>;</div><div class="line">    $link.attr({ href: blobUrl, download: fileName }).text(fileName).removeClass(<span class="string">"revoke"</span>);</div><div class="line">  });</div><div class="line">  $(<span class="string">'#btnRevokeUrl'</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    URL.revokeObjectURL($link.attr(<span class="string">"href"</span>));</div><div class="line">    $link.addClass(<span class="string">"revoke"</span>);</div><div class="line">  });</div><div class="line">});</div></pre></figure><br><a href="http://jsbin.com/xocul/1" target="_blank" rel="external">查看DEMO</a>   </p>
+</li>
+</ol>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li><a href="https://github.com/readium/readium-js/issues/72" target="_blank" rel="external">Safari 6无法解析BLOB URLs</a>：如果在Safari 6上使用src是BLOB URL的iframe，浏览器会崩溃</li>
+</ul>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="bloburls"></div>
+
+<h3 id="参考资料">参考资料</h3>
+<ol>
+<li><a href="http://stackoverflow.com/questions/20950791/html5s-file-api-blob-usages" target="_blank" rel="external">Html5’s File API - BLOB usages?</a></li>
+<li><a href="http://dev.w3.org/2006/webapi/FileAPI/" target="_blank" rel="external">W3C-File API</a></li>
+<li><a href="http://blog.darkthread.net/post-2014-03-12-html5-object-url.aspx" target="_blank" rel="external">HTML5筆記–Object URL</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Using_object_URLs" target="_blank" rel="external">Using files from web applications</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/20/Blob-URLs/" data-id="kvxvjcunsgk1t208" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/19/svg-morphing-icon/">使用SVG来制作变形补间动画</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/MathML/">MathML</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/woff/">woff</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 timezhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script src="/js/caniuse.min.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

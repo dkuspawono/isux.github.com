@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SVG动画基本知识 | HTML5 API手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="开始之前，先来看一张图：
+
+这张图是Sprout网站上的。以前是用gif格式的图片，而使用svg格式的图片代替了gif之后，体积大大减小从1.6mb减少到389kb，加载时间从8.75s减少到412ms。这完全是一个天上地下的感觉。
+下面我们将以一个简单的例子来一步步学习svg动画的技术原理。掌握这些原理后，你也能创建属于自己的动画效果。
+&lt;circle /&gt;
+由于要创建动画效果，所以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG动画基本知识">
+<meta property="og:url" content="http://yoursite.com/2015/01/18/svg-animate/">
+<meta property="og:site_name" content="HTML5 API手册">
+<meta property="og:description" content="开始之前，先来看一张图：
+
+这张图是Sprout网站上的。以前是用gif格式的图片，而使用svg格式的图片代替了gif之后，体积大大减小从1.6mb减少到389kb，加载时间从8.75s减少到412ms。这完全是一个天上地下的感觉。
+下面我们将以一个简单的例子来一步步学习svg动画的技术原理。掌握这些原理后，你也能创建属于自己的动画效果。
+&lt;circle /&gt;
+由于要创建动画效果，所以">
+<meta property="og:image" content="http://oak.is/assets/animated-svg-ff.svg">
+<meta property="og:image" content="http://oak.is/assets/keysplines-ff.svg">
+<meta property="og:image" content="http://oak.is/assets/ease-ff.svg">
+<meta property="og:image" content="http://oak.is/assets/ease.svg">
+<meta property="og:image" content="http://oak.is/assets/values-keytimes.svg">
+<meta property="og:image" content="http://oak.is/assets/animated-svg-ff.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVG动画基本知识">
+<meta name="twitter:description" content="开始之前，先来看一张图：
+
+这张图是Sprout网站上的。以前是用gif格式的图片，而使用svg格式的图片代替了gif之后，体积大大减小从1.6mb减少到389kb，加载时间从8.75s减少到412ms。这完全是一个天上地下的感觉。
+下面我们将以一个简单的例子来一步步学习svg动画的技术原理。掌握这些原理后，你也能创建属于自己的动画效果。
+&lt;circle /&gt;
+由于要创建动画效果，所以">
+
+  
+    <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/caniuse.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HTML5 API手册</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-svg-animate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/18/svg-animate/" class="article-date">
+  <time datetime="2015-01-18T07:45:41.000Z" itemprop="datePublished">Jan 18 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Graphics-and-typography/">Graphics and typography</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SVG动画基本知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始之前，先来看一张图：</p>
+<p><img src="http://oak.is/assets/animated-svg-ff.svg" alt=""></p>
+<p>这张图是<a href="http://sprout.is/" target="_blank" rel="external">Sprout</a>网站上的。以前是用gif格式的图片，而使用svg格式的图片代替了gif之后，体积大大减小从1.6mb减少到389kb，加载时间从8.75s减少到412ms。这完全是一个天上地下的感觉。</p>
+<p>下面我们将以一个简单的例子来一步步学习svg动画的技术原理。掌握这些原理后，你也能创建属于自己的动画效果。</p>
+<pre><code><span class="tag">&lt;<span class="title">circle</span> /&gt;</span>
+</code></pre><p>由于要创建动画效果，所以需要把动画元素即<strong>animate</strong>放置在<strong>circle</strong>元素里面：</p>
+<pre><code><span class="tag">&lt;<span class="title">circle</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">animate</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">circle</span>&gt;</span>
+</code></pre><p>我们先个圆形定义像诸如填充、边框等基本的样式。如下所示：</p>
+<pre><code>&lt;circle <span class="variable">fill=</span><span class="string">"#FFFFFF"</span> <span class="variable">stroke=</span><span class="string">"#B450FF"</span> <span class="variable">stroke-width=</span><span class="string">"6"</span> <span class="variable">stroke-miterlimit=</span><span class="string">"10"</span> <span class="variable">cx=</span><span class="string">"153"</span> <span class="variable">cy=</span><span class="string">"127"</span> <span class="variable">r=</span><span class="string">"6"</span>&gt;
+    &lt;animate /&gt;
+&lt;/circle&gt;
+</code></pre><h3 id="选择需要运动的属性">选择需要运动的属性</h3>
+<p><strong>attributeName</strong>是用来指定需要变化的属性名称。① 可以是元素直接暴露的属性，如元素的位置<strong>cx</strong>,或者是<strong>cy</strong>等 ② 可以是CSS属性。例如，透明度(opacity)、边框的宽度(stroke-width)、宽度(width)或者是其它的属性。这里我们选择的属性是<strong>cy</strong>也就是圆在y轴上的位置：</p>
+<pre><code><span class="variable">attributeName=</span><span class="string">"cy"</span>
+</code></pre><h3 id="From和To">From和To</h3>
+<p>使用<strong>from</strong>和<strong>to</strong>属性来告诉图形从哪开始以及到哪结束。比如这里指定<strong>from</strong>和<strong>to</strong>的值都是一样的：</p>
+<pre><code><span class="variable">from=</span><span class="string">"127"</span>
+<span class="variable">to=</span><span class="string">"127"</span>
+</code></pre><h3 id="设置动画运动的时间">设置动画运动的时间</h3>
+<p>动画之所以为动画，其实就是在不同的时间段做不同的事情。所以要制作一个动画效果，时间是必不可少的。在svg的动画属性中，有<strong>begin</strong>和<strong>dur</strong>两个。<strong>begin</strong>指动画开始的时间，一个动画效果必然是从0开始运动，所以一般<strong>begin</strong>的值都是为0；而<strong>dur</strong>则是指定动画所需要的时间。而当begin的值为”indefinite”的时候，表示“无限等待”。需要beginElement()方法触发或者指向该动画元素的超链接来触发动画效果。</p>
+<pre><code><span class="variable">begin=</span><span class="string">"0s"</span>
+<span class="variable">dur=</span><span class="string">"4s"</span>
+</code></pre><h3 id="设置Values">设置Values</h3>
+<p><strong>value</strong>值是把需要运动属性的变化的值定义为一个集合并且用分号分隔开。</p>
+<p>当在<strong>animate</strong>元素中同时使用了<strong>value</strong>和<strong>from,to</strong>的时候，<strong>animate</strong>会自动忽视<strong>from,to</strong>的值，而使用<strong>value</strong>属性的值。这里主要是使用来三个数值127，117，90，并且重复使用它们。从而使圆形产生暂停的效果。</p>
+<pre><code><span class="built_in">values</span>=<span class="string">"127;117;117;90;90;127;127"</span>
+</code></pre><p>这里注意一下，最后的数字和开始的数字使相等的。这样可以使图形回到开始运动的地方。</p>
+<p>使用重复的值是一种常用的动画技术。</p>
+<h3 id="calcMode">calcMode</h3>
+<p>定义了动画插值的方式：discrete:离散的，不插值；linear：线性插值；paced：步长插值；spline:样条插值。默认是linear(线性插值)，但是如果属性不支持线性插值，则会采用discrete插值方式。</p>
+<h3 id="Easing和transition">Easing和transition</h3>
+<p><strong>KeySplines</strong>这个属性定义了样条插值(贝塞尔插值)时的控制点，显然只有在插值模式选择为spline才起作用。这个列表中的值取值范围是0到1。贝塞尔曲线是做高级动画效果必备的一个东东，具体的详细的解释有点点复杂。这里推荐去这个网址了解贝塞尔曲线具体的效果<a href="http://cubic-bezier.com/#.1,.8,.2,1" target="_blank" rel="external">cubic Bézier easing</a>，还有这个网站而已非常不错<a href="http://easings.net/zh-cn" target="_blank" rel="external">http://easings.net/zh-cn</a>。</p>
+<pre><code>keySplines=<span class="string">"</span>
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span>; 
+        <span class="number">0.1</span> <span class="number">0.8</span> <span class="number">0.2</span> <span class="number">1</span><span class="string">" </span>
+</code></pre><p>上面代码中的每一行的四个值代表绘制曲线的控制点。还是来看图吧，一图胜千言：</p>
+<p><img src="http://oak.is/assets/keysplines-ff.svg" alt=""></p>
+<p>如果不使用过渡效果，动画效果看起来就很僵硬不自然；而使用过渡，动画效果就会符合自然世界中的动力学原理，看起来也更真实和自然。</p>
+<p><img src="http://oak.is/assets/ease-ff.svg" alt=""></p>
+<p>keySplines的值是在0和1之间的数字。下面是一个弹起的效果，keySplines的值是0.4 1.6 0.8 0.8。(在Webkit内核的浏览器中运行的很好，但是在Firefox中有点问题。)</p>
+<p><img src="http://oak.is/assets/ease.svg" alt=""></p>
+<h3 id="keyTimes">keyTimes</h3>
+<p>定义了以分号分隔的动画关键帧的时间列表。这个和values是一一对应的。这个值是受插值算法影响的，如果是线性(linear)和样条插值(spline)，则keyTimes的第一个值必须是0，最后一个值必须是1。对于离散(discrete)的不插值的方式，keyTimes的第一个值必须是0。对于步长插值方式，很显然是不需要keyTimes。而且如果动画的持续时间设置为indefinite，则忽略keyTimes。</p>
+<pre><code><span class="variable">keyTimes=</span><span class="string">"0;0.22;0.33;0.55;0.66;0.88;1"</span> 
+</code></pre><p><img src="http://oak.is/assets/values-keytimes.svg" alt=""></p>
+<p>使用keyTimes和values来制作动画效果，可以使动画效果看起来更自然舒服。</p>
+<h3 id="动画重复">动画重复</h3>
+<p>repeatCount是用来设置动画重复的次数。 indefinite代表无限重复。</p>
+<pre><code>repeatCount=<span class="string">"indefinite"</span>
+/&gt;
+<span class="variable">&lt;/circle&gt;</span>
+</code></pre><p>至此，一个简单的动画效果就制作完成来。</p>
+<p>最终代码如下所示：</p>
+<pre><code>&lt;circle <span class="variable">fill=</span><span class="string">"#FFFFFF"</span> <span class="variable">stroke=</span><span class="string">"#B450FF"</span> <span class="variable">stroke-width=</span><span class="string">"6"</span> <span class="variable">stroke-miterlimit=</span><span class="string">"10"</span> <span class="variable">cx=</span><span class="string">"153"</span> <span class="variable">cy=</span><span class="string">"127"</span> <span class="variable">r=</span><span class="string">"6"</span>&gt;
+&lt;animate
+    <span class="variable">attributeName=</span><span class="string">"cy"</span>
+    <span class="variable">from=</span><span class="string">"127"</span>
+    <span class="variable">to=</span><span class="string">"127"</span>
+    <span class="variable">begin=</span><span class="string">"0s"</span>
+    <span class="variable">dur=</span><span class="string">"4s"</span>
+    <span class="variable">values=</span><span class="string">"127;117;117;90;90;127;127"</span>
+    <span class="variable">keySplines=</span><span class="string">"
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1; 
+        0.1 0.8 0.2 1"</span> 
+    <span class="variable">keyTimes=</span><span class="string">"
+        0;0.22;0.33;0.55;0.66;0.88;1"</span> 
+    <span class="variable">calcMode=</span><span class="string">"spline"</span>
+    <span class="variable">repeatCount=</span><span class="string">"indefinite"</span>
+/&gt;
+&lt;/circle&gt;
+</code></pre><p>实际运行效果：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="xbdVPm" data-default-tab="result" data-user="janily" class="codepen">See the Pen <a href="http://codepen.io/janily/pen/xbdVPm/" target="_blank" rel="external">xbdVPm</a> by janily (<a href="http://codepen.io/janily" target="_blank" rel="external">@janily</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>再回到文章开始的那个动画效果，使用的原理跟我们这个圆的动画是一样的。对于圆，我们是通过改变它的<strong>cy</strong>的值来做的。而线段，也可以通过改变它的<strong>y1</strong>和<strong>y2</strong>的值来制作动画效果。</p>
+<p>使用svg代替gif来制作动画效果，可以大大减少页面的体积以及加载时间。最终完成的效果只有15kb。当然，也可以配合一些javascript的库来制作svg动画效果。不过对于一些不是很复杂的动画来说，并没有必要这样做，相对于利用svg本身的动画属性来说它不够轻量简洁。</p>
+<p><img src="http://oak.is/assets/animated-svg-ff.svg" alt=""></p>
+<p>下面是SVG中的SMIL动画的兼容性，可以看到IE平台是全部覆灭，还好现在在移动端windows平台不是很多，几乎可以忽略：</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="svg-smil"></div>
+
+<p>下面推荐一些关于svg动画的资源：</p>
+<p><a href="http://www.w3.org/TR/SVG/animate.html" target="_blank" rel="external">SVG Animate element spec</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL" target="_blank" rel="external">Mozilla: SVG animation with SMIL</a></p>
+<p><a href="http://caniuse.com/svg" target="_blank" rel="external">Can I Use: SVGs</a></p>
+<p><a href="http://caniuse.com/#feat=svg-smil" target="_blank" rel="external">Can I Use: SVG SMIL Animation</a></p>
+<p><a href="http://oak.is/thinking/animated-svgs/" target="_blank" rel="external">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/18/svg-animate/" data-id="6wyusos3wx1tpl6j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/19/svg-morphing-icon/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用SVG来制作变形补间动画
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/16/MathML/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MathML</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/19/svg-morphing-icon/">使用SVG来制作变形补间动画</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/MathML/">MathML</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/16/woff/">woff</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 timezhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script src="/js/caniuse.min.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
