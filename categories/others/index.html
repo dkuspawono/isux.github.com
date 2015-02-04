@@ -3,26 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Shared-Workers | HTML5 API手册</title>
+  <title>Category: others | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Shared-Workers">
-<meta property="og:url" content="http://yoursite.com/2015/01/15/Shared-Workers/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/categories/others/">
 <meta property="og:site_name" content="HTML5 API手册">
-<meta property="og:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shared-Workers">
-<meta name="twitter:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -72,14 +63,16 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Shared-Workers" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-WebIDL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/01/15/Shared-Workers/" class="article-date">
-  <time datetime="2015-01-15T03:16:35.000Z" itemprop="datePublished">Jan 15 2015</time>
+    <a href="/2015/02/04/WebIDL/" class="article-date">
+  <time datetime="2015-02-04T08:40:00.000Z" itemprop="datePublished">Feb 4 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a>
+    <a class="article-category-link" href="/categories/others/">others</a>
   </div>
 
   </div>
@@ -89,8 +82,8 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Shared-Workers
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/04/WebIDL/">WebIDL</a>
     </h1>
   
 
@@ -99,46 +92,36 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//创建共享线程</span></div><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> SharedWorker(<span class="string">'sharedworker.js'</span>, ’ mysharedworker ’ );  <span class="comment">//第一个参数，即是指向 JavaScript 资源文件的 URL；第二个参数为共享线程的名称</span></div><div class="line"></div><div class="line"><span class="comment">// 从端口接收数据 , 包括文本数据以及结构化数据</span></div><div class="line"><span class="number">1.</span> worker.port.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ define your logic <span class="keyword">here</span>... };</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送普通文本数据</span></div><div class="line"><span class="number">2.</span> worker.port.postMessage(<span class="string">'put your message here … '</span>);</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送结构化数据</span></div><div class="line"><span class="number">3.</span> worker.port.postMessage({ username: <span class="string">'usertext'</span>; live_city:[<span class="string">'data-one'</span>, <span class="string">'data-two'</span>, <span class="string">'data-three'</span>,<span class="string">'data-four'</span>]});</div></pre></figure>
+<p>Web IDL是接口定义语言，用于描述要在Web浏览器中实现的接口。它的主要目的是为W3C规范定义接口、并为这种接口的ECMAScript与Java绑定提供精确的一致性要求。</p>
+<p>JavaScript通过浏览器访问DOM对象就需要使用浏览器内核的接口，而浏览器内核是支持多种绑定的，比如下面就是Webkit所支持的5种绑定对象，要和不同的外部组件集成就需要一个接口的规范，Web IDL就是这么一种规范：<br><img src="\img\webkit-binding.jpg" alt="webkit-binding"></p>
+<h3 id="实例">实例</h3>
+<p>以下是Web IDL的一个实现，其中Node是一个interface，[CustomToJSObject], [TreatReturnedNullStringAs=Null], [Custom] and [CustomReturn]是IDL的控制属性：</p>
+<figure class="highlight"><pre><div class="line">module core { </div><div class="line">	[ </div><div class="line">		CustomToJSObject </div><div class="line">	] interface Node { </div><div class="line">		const unsigned short ELEMENT_NODE = 1; </div><div class="line">		attribute Node parentNode; </div><div class="line">		[TreatReturnedNullStringAs=Null] attribute DOMString nodeName; </div><div class="line">		[Custom] Node appendChild([CustomReturn] Node newChild); </div><div class="line">		void addEventListener(DOMString type, EventListener listener, optional boolean useCapture); </div><div class="line">	}; </div><div class="line">}</div></pre></figure>
 
-<h3 id="常见问题">常见问题</h3>
-<p>Shared Workers兼容性较差，IE，safari和移动端浏览器都不支持。</p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="sharedworkers"></div>
+
+<h3 id="参考资料">参考资料</h3>
+<ol>
+<li><a href="http://tech.mozilla.com.tw/posts/5013/webidl-extended-attribute-%E5%A4%A7%E8%A7%A3%E5%AF%86" target="_blank" rel="external">WebIDL Extended Attribute 大解密</a></li>
+<li><a href="http://www.browserwork.com/mechanism/webcore-javascript-dom-binding/" target="_blank" rel="external">WebKit JavaScript DOM对象绑定</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/WebIDL_bindings" target="_blank" rel="external">WebIDL bindings</a></li>
+<li><a href="http://www.infoq.com/cn/news/2008/09/WebIDL" target="_blank" rel="external">Web IDL：W3C DOM规范语言绑定有了新名称</a></li>
+<li><a href="http://www.w3.org/TR/WebIDL/" target="_blank" rel="external">Web IDL</a></li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/15/Shared-Workers/" data-id="b42j5zsubvdmrsvx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/02/04/WebIDL/" data-id="0sokfwh4j3odomxd" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2015/01/16/ORTC-for-WebRTC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ORTC-for-WebRTC
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/01/14/channel-messaging/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">channel-messaging</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
 </section>
         
           <aside id="sidebar">

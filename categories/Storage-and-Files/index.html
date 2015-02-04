@@ -65,6 +65,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-File-API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/27/File-API/" class="article-date">
+  <time datetime="2015-01-27T07:30:42.000Z" itemprop="datePublished">Jan 27 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Storage-and-Files/">Storage and Files</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/27/File-API/">File-API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">	<span class="comment">//your code</span></div><div class="line">    };</div><div class="line">})(file);</div><div class="line">fileReader.readAsDataURL(file);</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="keyword">var</span> dropBox=<span class="built_in">document</span>.getElementById(id);</div><div class="line">dropBox.ondrop=<span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>{</div><div class="line">	e.stopPropagation();</div><div class="line">	e.preventDefault();</div><div class="line">	<span class="comment">//上传文件的数量</span></div><div class="line">	<span class="keyword">var</span> fileCount=e.dataTransfer.files.length;</div><div class="line">	<span class="keyword">if</span>(fileCount&gt;<span class="number">20</span>){</div><div class="line">		alert(<span class="string">"最多上传20张图片！"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	}</div><div class="line">	<span class="keyword">else</span>{</div><div class="line">		<span class="comment">//遍历每个文件</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;fileCount;i++){</div><div class="line">			<span class="comment">//得到当前文件对象</span></div><div class="line">			<span class="keyword">var</span> file=e.dataTransfer.files[i];</div><div class="line">			<span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">			<span class="comment">//加载完当前文件之后执行回调函数</span></div><div class="line">			fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">				<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">				<span class="comment">//输出图片的base64编码</span></div><div class="line">				<span class="built_in">console</span>.log(e.target.result);</div><div class="line">				}</div><div class="line">			})(file);</div><div class="line">			<span class="comment">//加载文件</span></div><div class="line">			fileReader.readAsDataURL(file);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div></pre></figure><br><a href="http://zhitu.tencent.com" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="fileapi"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/27/File-API/" data-id="8uisbeq4wsavmhxt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Blob-URLs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/01/20/Blob-URLs/" class="article-date">
@@ -142,7 +190,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -155,7 +203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -167,6 +215,14 @@
       <ul>
         
           <li>
+            <a href="/2015/02/04/WebIDL/">WebIDL</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/27/File-API/">File-API</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
           </li>
         
@@ -176,14 +232,6 @@
         
           <li>
             <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/MathML/">MathML</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/woff/">woff</a>
           </li>
         
       </ul>

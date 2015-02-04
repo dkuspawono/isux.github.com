@@ -3,26 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Shared-Workers | HTML5 API手册</title>
+  <title>Archives: 2015 | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Shared-Workers">
-<meta property="og:url" content="http://yoursite.com/2015/01/15/Shared-Workers/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 API手册">
+<meta property="og:url" content="http://yoursite.com/archives/2015/page/3/">
 <meta property="og:site_name" content="HTML5 API手册">
-<meta property="og:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shared-Workers">
-<meta name="twitter:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
-语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+<meta name="twitter:title" content="HTML5 API手册">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -72,16 +63,14 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Shared-Workers" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-data-URIs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/01/15/Shared-Workers/" class="article-date">
-  <time datetime="2015-01-15T03:16:35.000Z" itemprop="datePublished">Jan 15 2015</time>
+    <a href="/2015/01/09/data-URIs/" class="article-date">
+  <time datetime="2015-01-09T07:12:39.000Z" itemprop="datePublished">Jan 9 2015</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -89,8 +78,8 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Shared-Workers
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/09/data-URIs/">data-uris</a>
     </h1>
   
 
@@ -98,47 +87,39 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="用途">用途</h3>
-<p>Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//创建共享线程</span></div><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> SharedWorker(<span class="string">'sharedworker.js'</span>, ’ mysharedworker ’ );  <span class="comment">//第一个参数，即是指向 JavaScript 资源文件的 URL；第二个参数为共享线程的名称</span></div><div class="line"></div><div class="line"><span class="comment">// 从端口接收数据 , 包括文本数据以及结构化数据</span></div><div class="line"><span class="number">1.</span> worker.port.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ define your logic <span class="keyword">here</span>... };</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送普通文本数据</span></div><div class="line"><span class="number">2.</span> worker.port.postMessage(<span class="string">'put your message here … '</span>);</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送结构化数据</span></div><div class="line"><span class="number">3.</span> worker.port.postMessage({ username: <span class="string">'usertext'</span>; live_city:[<span class="string">'data-one'</span>, <span class="string">'data-two'</span>, <span class="string">'data-three'</span>,<span class="string">'data-four'</span>]});</div></pre></figure>
-
-<h3 id="常见问题">常见问题</h3>
-<p>Shared Workers兼容性较差，IE，safari和移动端浏览器都不支持。</p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="sharedworkers"></div>
+        <h2 id="说明">说明</h2>
+<p>data URIs是由RFC 2397定义, 允许将一个小文件进行编码后嵌入到另外一个文档里.</p>
+<h2 id="语法">语法</h2>
+<p><figure class="highlight"><pre><div class="line">data:[<span class="link_label">&lt;mediatype&gt;</span>][<span class="link_reference">;base64</span>],<span class="xml"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span></div></pre></figure><br>mediatype是一种MIME类型字符串, 例如 “image/jpeg” 代表 JPEG 图像文件.如果省略这个参数, 则默认值为text/plain;charset=US-ASCII</p>
+<blockquote>
+<p>如果数据是文本类型, 你可以直接将文本嵌入在data:后面 (根据文本类型以及编码,使用合适的HTML实体编码或者百分号编码). 如果是二进制数据, 你可以将数据进行base64编码之后再进行嵌入。</p>
+</blockquote>
+<h2 id="示例">示例</h2>
+<p>data:,Hello%2C%20World!<br>简单的text/plain类型数据<br>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D<br>base64编码过的数据<br>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E<br>一个HTML文档源代码 </p>
+<h2 id="常见问题">常见问题</h2>
+<p>长度限制<br>虽然Mozilla支持无限长度的data URIs,但是标准中并没有规定浏览器必须支持无限长度的data URIs.比如,Opera 11限制data URIs的长度最多为65000个字符. </p>
+<p>缺乏错误处理<br>MIME类型错误或者base64编码错误,都会造成data URIs无法被正常解析, 但不会有任何相关错误提示.</p>
+<p>不支持查询字符串<br>一个data URI的数据字段是没有结束标记的,所以尝试在一个data URI后面添加查询字符串会导致,查询字符串也一并被当作数据字段.例如:</p>
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+<div class="caniuse" data-feature="datauri"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/15/Shared-Workers/" data-id="b42j5zsubvdmrsvx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/09/data-URIs/" data-id="zqt8sgqco1yottzj" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2015/01/16/ORTC-for-WebRTC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ORTC-for-WebRTC
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/01/14/channel-messaging/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">channel-messaging</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2015/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2015/">1</a><a class="page-number" href="/archives/2015/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">

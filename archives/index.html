@@ -65,6 +65,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-WebIDL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/04/WebIDL/" class="article-date">
+  <time datetime="2015-02-04T08:40:00.000Z" itemprop="datePublished">Feb 4 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/others/">others</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/04/WebIDL/">WebIDL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>Web IDL是接口定义语言，用于描述要在Web浏览器中实现的接口。它的主要目的是为W3C规范定义接口、并为这种接口的ECMAScript与Java绑定提供精确的一致性要求。</p>
+<p>JavaScript通过浏览器访问DOM对象就需要使用浏览器内核的接口，而浏览器内核是支持多种绑定的，比如下面就是Webkit所支持的5种绑定对象，要和不同的外部组件集成就需要一个接口的规范，Web IDL就是这么一种规范：<br><img src="\img\webkit-binding.jpg" alt="webkit-binding"></p>
+<h3 id="实例">实例</h3>
+<p>以下是Web IDL的一个实现，其中Node是一个interface，[CustomToJSObject], [TreatReturnedNullStringAs=Null], [Custom] and [CustomReturn]是IDL的控制属性：</p>
+<figure class="highlight"><pre><div class="line">module core { </div><div class="line">	[ </div><div class="line">		CustomToJSObject </div><div class="line">	] interface Node { </div><div class="line">		const unsigned short ELEMENT_NODE = 1; </div><div class="line">		attribute Node parentNode; </div><div class="line">		[TreatReturnedNullStringAs=Null] attribute DOMString nodeName; </div><div class="line">		[Custom] Node appendChild([CustomReturn] Node newChild); </div><div class="line">		void addEventListener(DOMString type, EventListener listener, optional boolean useCapture); </div><div class="line">	}; </div><div class="line">}</div></pre></figure>
+
+
+<h3 id="参考资料">参考资料</h3>
+<ol>
+<li><a href="http://tech.mozilla.com.tw/posts/5013/webidl-extended-attribute-%E5%A4%A7%E8%A7%A3%E5%AF%86" target="_blank" rel="external">WebIDL Extended Attribute 大解密</a></li>
+<li><a href="http://www.browserwork.com/mechanism/webcore-javascript-dom-binding/" target="_blank" rel="external">WebKit JavaScript DOM对象绑定</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/WebIDL_bindings" target="_blank" rel="external">WebIDL bindings</a></li>
+<li><a href="http://www.infoq.com/cn/news/2008/09/WebIDL" target="_blank" rel="external">Web IDL：W3C DOM规范语言绑定有了新名称</a></li>
+<li><a href="http://www.w3.org/TR/WebIDL/" target="_blank" rel="external">Web IDL</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/02/04/WebIDL/" data-id="0sokfwh4j3odomxd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-File-API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/27/File-API/" class="article-date">
+  <time datetime="2015-01-27T07:30:42.000Z" itemprop="datePublished">Jan 27 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Storage-and-Files/">Storage and Files</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/27/File-API/">File-API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">	<span class="comment">//your code</span></div><div class="line">    };</div><div class="line">})(file);</div><div class="line">fileReader.readAsDataURL(file);</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="keyword">var</span> dropBox=<span class="built_in">document</span>.getElementById(id);</div><div class="line">dropBox.ondrop=<span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>{</div><div class="line">	e.stopPropagation();</div><div class="line">	e.preventDefault();</div><div class="line">	<span class="comment">//上传文件的数量</span></div><div class="line">	<span class="keyword">var</span> fileCount=e.dataTransfer.files.length;</div><div class="line">	<span class="keyword">if</span>(fileCount&gt;<span class="number">20</span>){</div><div class="line">		alert(<span class="string">"最多上传20张图片！"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	}</div><div class="line">	<span class="keyword">else</span>{</div><div class="line">		<span class="comment">//遍历每个文件</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;fileCount;i++){</div><div class="line">			<span class="comment">//得到当前文件对象</span></div><div class="line">			<span class="keyword">var</span> file=e.dataTransfer.files[i];</div><div class="line">			<span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">			<span class="comment">//加载完当前文件之后执行回调函数</span></div><div class="line">			fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">				<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">				<span class="comment">//输出图片的base64编码</span></div><div class="line">				<span class="built_in">console</span>.log(e.target.result);</div><div class="line">				}</div><div class="line">			})(file);</div><div class="line">			<span class="comment">//加载文件</span></div><div class="line">			fileReader.readAsDataURL(file);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div></pre></figure><br><a href="http://zhitu.tencent.com" target="_blank" rel="external">查看DEMO</a></p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="fileapi"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/27/File-API/" data-id="8uisbeq4wsavmhxt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Blob-URLs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/01/20/Blob-URLs/" class="article-date">
@@ -634,107 +738,6 @@ animationToCheck.beginElement();
 
 
   
-    <article id="post-channel-messaging" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/14/channel-messaging/" class="article-date">
-  <time datetime="2015-01-14T14:43:21.000Z" itemprop="datePublished">Jan 14 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/14/channel-messaging/">channel-messaging</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//开启通道：</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"></div><div class="line"><span class="comment">//MessageChannel对象包括了两个端口port1和port2，一般第一个端口是本地端口，第二个是发送到远程windows或worker的端口。</span></div><div class="line">channel.port1;</div><div class="line">channel.port2;</div><div class="line"></div><div class="line"><span class="comment">//用postMessage通讯：</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"></div><div class="line"><span class="comment">//用onmessage接受事件：</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{<span class="comment">//something }</span></div><div class="line"></div><div class="line"><span class="comment">//你也可以发给Web worker：</span></div><div class="line">worker.postMessage({code:’port’},[channel.port2]);</div><div class="line"></div><div class="line"><span class="comment">//Web worker接收一样用onmessage：</span></div><div class="line">onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">     <span class="keyword">if</span> (event.data.code == <span class="string">"port"</span>) {</div><div class="line">     event.ports[<span class="number">0</span>].postMessage(<span class="string">"Port received."</span>);</div><div class="line">   }</div><div class="line">}</div></pre></figure>
-
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"><span class="comment">//定义channel对象</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"><span class="comment">//发送一个端口到对面</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"><span class="comment">//接受对面端口发来的消息</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ <span class="comment">// Message is in event.data alert("Message is: " + event.data); }</span></div><div class="line"><span class="comment">//发送消息到对面</span></div><div class="line">channel.port1.postMessage(<span class="string">'hello'</span>);</div></pre></figure><br><a href="http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="channel-messaging"></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/14/channel-messaging/" data-id="ey4nqcxvshksxih7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cross-document-messaging" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/14/cross-document-messaging/" class="article-date">
-  <time datetime="2015-01-14T14:43:14.000Z" itemprop="datePublished">Jan 14 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/14/cross-document-messaging/">cross-document-messaging</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>跨文档通信(Cross-document messaging)提供了网页上不同文档之间的通讯能力。以往需要在相同协议、域名、端口下的页面才能用脚本语言通讯，现在的window.postMessage方法则提供了一种安全可靠的方式来控制文档间的通信。</p>
-<h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">otherWindow.postMessage(message, targetOrigin, [transfer]);</div><div class="line"></div><div class="line">/*</div><div class="line">其中有四个参数：</div><div class="line">otherWindow，发送目标的<span class="built_in">window</span>对象引用，例如同一页面间的两个iframe交互，other <span class="built_in">window</span>就可能是<span class="built_in">window</span>.parent.frames[<span class="number">1</span>]；</div><div class="line">message，要发送的数据；</div><div class="line">targetOrigin，发送数据的来源，一般是域名，如<span class="attribute">http</span>:<span class="regexp">//</span>www.tq.com，注意最后不要加<span class="regexp">/，例如http:/</span><span class="regexp">/www.tq.com/</span>；</div><div class="line">[transfer]，用于通道通讯（Channel Messaging），用于定义端口信息。</div><div class="line">*/</div></pre></figure>
-
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"><span class="comment">//发送端</span></div><div class="line"><span class="keyword">var</span> eleForm = <span class="built_in">document</span>.querySelector(<span class="string">"form"</span>);</div><div class="line">eleForm.onsubmit = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> message = <span class="built_in">document</span>.querySelector(<span class="string">"input[type='text']"</span>).value;</div><div class="line">    <span class="comment">// 这里是关键，发送信息</span></div><div class="line">    <span class="built_in">window</span>.parent.frames[<span class="number">1</span>].postMessage(message, <span class="string">'*'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;   </div><div class="line">}</div><div class="line"><span class="comment">//接收端</span></div><div class="line"><span class="keyword">var</span> eleBox = <span class="built_in">document</span>.querySelector(<span class="string">"#message"</span>);</div><div class="line"><span class="keyword">var</span> messageHandle = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>{</div><div class="line">    eleBox.innerHTML = <span class="string">'接受到的信息是：'</span> + e.data; };</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) {</div><div class="line">    <span class="comment">// 接受信息</span></div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, messageHandle, <span class="literal">false</span>);</div><div class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) {</div><div class="line">    <span class="comment">// 接受信息，兼顾IE8之流</span></div><div class="line">    <span class="built_in">window</span>.attachEvent(<span class="string">'onmessage'</span>, messageHandle);</div><div class="line">}</div></pre></figure><br><a href="http://www.zhangxinxu.com/study/201202/web-messing-cross-document-messaging-two-iframe.html" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
-<h3 id="常见问题">常见问题</h3>
-<ul>
-<li>问题1<br>跨文档通讯也支持跨窗体，例如两个子页面间通讯，可是IE8不支持窗口间通讯。</li>
-<li>问题2<br>跨文档通讯（Cross-document Messaging）跟通道通讯（Channel Messaging）同为WEB通信，只是后者支持度娇弱，可以结合一起学习。</li>
-</ul>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="x-doc-messaging"></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/14/cross-document-messaging/" data-id="nfyh83xxupncfaeg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
@@ -748,7 +751,7 @@ animationToCheck.beginElement();
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -761,7 +764,7 @@ animationToCheck.beginElement();
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -773,6 +776,14 @@ animationToCheck.beginElement();
       <ul>
         
           <li>
+            <a href="/2015/02/04/WebIDL/">WebIDL</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/27/File-API/">File-API</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
           </li>
         
@@ -782,14 +793,6 @@ animationToCheck.beginElement();
         
           <li>
             <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/MathML/">MathML</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/woff/">woff</a>
           </li>
         
       </ul>

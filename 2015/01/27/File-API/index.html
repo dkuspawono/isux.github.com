@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Shared-Workers | HTML5 API手册</title>
+  <title>File-API | HTML5 API手册</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
+File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。
 语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+var fileReader = new FileReader();fileReader.onload = (function (file) {    return function (e) {	//your code    };})(file);f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shared-Workers">
-<meta property="og:url" content="http://yoursite.com/2015/01/15/Shared-Workers/">
+<meta property="og:title" content="File-API">
+<meta property="og:url" content="http://yoursite.com/2015/01/27/File-API/">
 <meta property="og:site_name" content="HTML5 API手册">
 <meta property="og:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
+File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。
 语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+var fileReader = new FileReader();fileReader.onload = (function (file) {    return function (e) {	//your code    };})(file);f">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shared-Workers">
+<meta name="twitter:title" content="File-API">
 <meta name="twitter:description" content="用途
-Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
+File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。
 语法
-//创建共享线程var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );  //第一个参数，即是指向 JavaScr">
+var fileReader = new FileReader();fileReader.onload = (function (file) {    return function (e) {	//your code    };})(file);f">
 
   
     <link rel="alternative" href="/atom.xml" title="HTML5 API手册" type="application/atom+xml">
@@ -72,14 +72,14 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Shared-Workers" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-File-API" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/01/15/Shared-Workers/" class="article-date">
-  <time datetime="2015-01-15T03:16:35.000Z" itemprop="datePublished">Jan 15 2015</time>
+    <a href="/2015/01/27/File-API/" class="article-date">
+  <time datetime="2015-01-27T07:30:42.000Z" itemprop="datePublished">Jan 27 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a>
+    <a class="article-category-link" href="/categories/Storage-and-Files/">Storage and Files</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
         
   
     <h1 class="article-title" itemprop="name">
-      Shared-Workers
+      File-API
     </h1>
   
 
@@ -99,18 +99,18 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Shared Workers与Web Workers类似，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。</p>
+<p>File API可用于对用户本地上传文件的操作，譬如读取图片信息，展示缩略图，转换base64等一系列操作。最常用于图片拖拽上传服务器。</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//创建共享线程</span></div><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> SharedWorker(<span class="string">'sharedworker.js'</span>, ’ mysharedworker ’ );  <span class="comment">//第一个参数，即是指向 JavaScript 资源文件的 URL；第二个参数为共享线程的名称</span></div><div class="line"></div><div class="line"><span class="comment">// 从端口接收数据 , 包括文本数据以及结构化数据</span></div><div class="line"><span class="number">1.</span> worker.port.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ define your logic <span class="keyword">here</span>... };</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送普通文本数据</span></div><div class="line"><span class="number">2.</span> worker.port.postMessage(<span class="string">'put your message here … '</span>);</div><div class="line"></div><div class="line"><span class="comment">// 向端口发送结构化数据</span></div><div class="line"><span class="number">3.</span> worker.port.postMessage({ username: <span class="string">'usertext'</span>; live_city:[<span class="string">'data-one'</span>, <span class="string">'data-two'</span>, <span class="string">'data-three'</span>,<span class="string">'data-four'</span>]});</div></pre></figure>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">	<span class="comment">//your code</span></div><div class="line">    };</div><div class="line">})(file);</div><div class="line">fileReader.readAsDataURL(file);</div></pre></figure>
 
-<h3 id="常见问题">常见问题</h3>
-<p>Shared Workers兼容性较差，IE，safari和移动端浏览器都不支持。</p>
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="keyword">var</span> dropBox=<span class="built_in">document</span>.getElementById(id);</div><div class="line">dropBox.ondrop=<span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>{</div><div class="line">	e.stopPropagation();</div><div class="line">	e.preventDefault();</div><div class="line">	<span class="comment">//上传文件的数量</span></div><div class="line">	<span class="keyword">var</span> fileCount=e.dataTransfer.files.length;</div><div class="line">	<span class="keyword">if</span>(fileCount&gt;<span class="number">20</span>){</div><div class="line">		alert(<span class="string">"最多上传20张图片！"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	}</div><div class="line">	<span class="keyword">else</span>{</div><div class="line">		<span class="comment">//遍历每个文件</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;fileCount;i++){</div><div class="line">			<span class="comment">//得到当前文件对象</span></div><div class="line">			<span class="keyword">var</span> file=e.dataTransfer.files[i];</div><div class="line">			<span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">			<span class="comment">//加载完当前文件之后执行回调函数</span></div><div class="line">			fileReader.onload = (<span class="function"><span class="keyword">function</span> <span class="params">(file)</span> </span>{</div><div class="line">				<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">				<span class="comment">//输出图片的base64编码</span></div><div class="line">				<span class="built_in">console</span>.log(e.target.result);</div><div class="line">				}</div><div class="line">			})(file);</div><div class="line">			<span class="comment">//加载文件</span></div><div class="line">			fileReader.readAsDataURL(file);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div></pre></figure><br><a href="http://zhitu.tencent.com" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="sharedworkers"></div>
+<div class="caniuse" data-feature="fileapi"></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/15/Shared-Workers/" data-id="b42j5zsubvdmrsvx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/27/File-API/" data-id="8uisbeq4wsavmhxt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,19 +119,19 @@ Shared Workers与Web Workers类似，它允许同域中的多个应用程序使�
     
 <nav id="article-nav">
   
-    <a href="/2015/01/16/ORTC-for-WebRTC/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/02/04/WebIDL/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          ORTC-for-WebRTC
+          WebIDL
         
       </div>
     </a>
   
   
-    <a href="/2015/01/14/channel-messaging/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/01/20/Blob-URLs/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">channel-messaging</div>
+      <div class="article-nav-title">Blob-URLs</div>
     </a>
   
 </nav>

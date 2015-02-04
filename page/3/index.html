@@ -65,6 +65,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-data-URIs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/09/data-URIs/" class="article-date">
+  <time datetime="2015-01-09T07:12:39.000Z" itemprop="datePublished">Jan 9 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/09/data-URIs/">data-uris</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="说明">说明</h2>
+<p>data URIs是由RFC 2397定义, 允许将一个小文件进行编码后嵌入到另外一个文档里.</p>
+<h2 id="语法">语法</h2>
+<p><figure class="highlight"><pre><div class="line">data:[<span class="link_label">&lt;mediatype&gt;</span>][<span class="link_reference">;base64</span>],<span class="xml"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span></div></pre></figure><br>mediatype是一种MIME类型字符串, 例如 “image/jpeg” 代表 JPEG 图像文件.如果省略这个参数, 则默认值为text/plain;charset=US-ASCII</p>
+<blockquote>
+<p>如果数据是文本类型, 你可以直接将文本嵌入在data:后面 (根据文本类型以及编码,使用合适的HTML实体编码或者百分号编码). 如果是二进制数据, 你可以将数据进行base64编码之后再进行嵌入。</p>
+</blockquote>
+<h2 id="示例">示例</h2>
+<p>data:,Hello%2C%20World!<br>简单的text/plain类型数据<br>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D<br>base64编码过的数据<br>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E<br>一个HTML文档源代码 </p>
+<h2 id="常见问题">常见问题</h2>
+<p>长度限制<br>虽然Mozilla支持无限长度的data URIs,但是标准中并没有规定浏览器必须支持无限长度的data URIs.比如,Opera 11限制data URIs的长度最多为65000个字符. </p>
+<p>缺乏错误处理<br>MIME类型错误或者base64编码错误,都会造成data URIs无法被正常解析, 但不会有任何相关错误提示.</p>
+<p>不支持查询字符串<br>一个data URI的数据字段是没有结束标记的,所以尝试在一个data URI后面添加查询字符串会导致,查询字符串也一并被当作数据字段.例如:</p>
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+<div class="caniuse" data-feature="datauri"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/09/data-URIs/" data-id="zqt8sgqco1yottzj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-media-fragments" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/12/29/media-fragments/" class="article-date">
@@ -165,14 +215,14 @@
 
 
   
-    <article id="post-contentEditable" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hashchange" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/contentEditable/" class="article-date">
+    <a href="/2014/12/29/hashchange/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Service-Workers/">Service Workers</a>
+    <a class="article-category-link" href="/categories/HTML-bonus-features/">HTML bonus features</a>
   </div>
 
   </div>
@@ -183,7 +233,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/contentEditable/">contentEditable</a>
+      <a class="article-title" href="/2014/12/29/hashchange/">hashchange</a>
     </h1>
   
 
@@ -192,25 +242,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>contentEditable 属性用来表明一个元素是否处于可编辑的状态</p>
+<p>hashchange事件会在页面URL中的片段标识符(第一个#号开始到末尾的所有字符,包括#号)发生改变时触发.</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line">&lt;element contentEditable=<span class="string">"value"</span>&gt;这是内容内容<span class="keyword">...</span>&lt;/element&gt;</div></pre></figure>
+<figure class="highlight"><pre><div class="line">code</div></pre></figure>
 
-<p>value 的值为：</p>
-<ul>
-<li>true 表示该元素可编辑.</li>
-<li>false 表示元素不可编辑.</li>
-<li>inherit 表示该元素继承了其父元素的可编辑状态.</li>
-</ul>
 <h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line">&lt;div id=<span class="string">"demo-1"</span> class=<span class="string">"demo"</span> contentEditable=<span class="string">"true"</span>&gt;</div><div class="line">  &lt;h2&gt;contentEditable&lt;/h2&gt;</div><div class="line">  &lt;p&gt;默认是不可以编辑状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">  &lt;p&gt;请点击上面的按钮改变状态<span class="keyword">...</span>&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></figure><br><a href="http://m.isux.us/touch_proj/h5api/contenteditable.html" target="_blank" rel="external">查看DEMO</a></p>
+<p><figure class="highlight"><pre><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">(window)</span> </span>{</div><div class="line"></div><div class="line">  <span class="comment">// 如果浏览器原生支持该事件,则退出  </span></div><div class="line"><span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) { <span class="keyword">return</span>; }</div><div class="line"></div><div class="line">  <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</div><div class="line">    oldURL = location.href,</div><div class="line">    oldHash = location.hash;</div><div class="line"></div><div class="line">  <span class="comment">// 每隔100ms检测一下location.hash是否发生变化</span></div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> newURL = location.href,</div><div class="line">      newHash = location.hash;</div><div class="line"></div><div class="line">    <span class="comment">// 如果hash发生了变化,且绑定了处理函数...</span></div><div class="line">    <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span> ) {</div><div class="line">      <span class="comment">// execute the handler</span></div><div class="line">      <span class="built_in">window</span>.onhashchange({</div><div class="line">        type: <span class="string">"hashchange"</span>,</div><div class="line">        oldURL: oldURL,</div><div class="line">        newURL: newURL</div><div class="line">      });</div><div class="line"></div><div class="line">      oldURL = newURL;</div><div class="line">      oldHash = newHash;</div><div class="line">    }</div><div class="line">  }, <span class="number">100</span>);</div><div class="line"></div><div class="line">})(<span class="built_in">window</span>);</div></pre></figure><br><a href="http://html5demos.com/dataset" target="_blank" rel="external">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="contentEditable"></div>
+<div class="caniuse" data-feature="hashchange"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/contentEditable/" data-id="88rxeynsnqlk17fu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/hashchange/" data-id="isyda49jvd1407no" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,14 +434,14 @@
 
 
   
-    <article id="post-pointer-events" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/29/pointer-events/" class="article-date">
+    <a href="/2014/12/29/vibration/" class="article-date">
   <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+    <a class="article-category-link" href="/categories/Media/">Media</a>
   </div>
 
   </div>
@@ -408,7 +452,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/pointer-events/">Pointer Events</a>
+      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
     </h1>
   
 
@@ -417,25 +461,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用途">用途</h3>
-<p>Pointer Lock锁定鼠标的指针，当调用指针锁定时候，即使鼠标已经移出了屏幕可视区域，鼠标事件还是可以捕获得到。通常与FullScreen Api合用,一个元素在能够被指针锁定之前，必须首先进入全屏模式。</p>
+<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
 <h3 id="语法">语法</h3>
-<figure class="highlight"><pre><div class="line"><span class="comment">//请求指针锁定</span></div><div class="line"><span class="function">requestPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//退出指针锁定</span></div><div class="line"><span class="function">exitPointerLock</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定解除时触发</span></div><div class="line"><span class="function">pointerlockchange</span>();</div><div class="line"></div><div class="line"><span class="comment">//指针锁定出错时触发;</span></div><div class="line"><span class="function">pointerlockerror</span>();</div></pre></figure>
-
+<ul>
+<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
+</li>
+<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
+</li>
+</ul>
 <h3 id="实例">实例</h3>
-<figure class="highlight"><pre><div class="line">elem.requestPointerLock = elem.requestPointerLock    ||</div><div class="line">                              elem.mozRequestPointerLock ||</div><div class="line">                              elem.webkitRequestPointerLock;</div><div class="line">elem.requestPointerLock();</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockchange'</span>, pointerLockChange, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pointerLockError</span><span class="params">()</span> </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"锁定指针时出错。"</span>);</div><div class="line">}</div></pre></figure>
-
-<p><a href="http://m.isux.us/touch_proj/h5api/Pointer-Events.html" target="_blank" rel="external">查看DEMO</a></p>
-<h3 id="常见问题">常见问题</h3>
-<p>若无法使用，可尝试加上事件前缀，譬如：</p>
-<figure class="highlight"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'pointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'mozpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'webkitpointerlockerror'</span>, pointerLockError, <span class="literal">false</span>);</div></pre></figure>
-
+<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
 <h3 id="兼容性">兼容性</h3>
-<p>目前主要是谷歌内核以及火狐浏览器支持。</p>
+<div class="caniuse" data-feature="vibration"></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/pointer-events/" data-id="4dwisukltio3w7bx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="0cb35vploaioaea7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,71 +641,6 @@
 
 
   
-    <article id="post-html-imports" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/29/html-imports/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Web-Components/">Web Components</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/html-imports/">HTML Imports</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>HTML Imports是一种在其他HTML文档中引入和复用HTML文档的方法，目前是W3C的一个草案。</p>
-<h3 id="语法">语法</h3>
-<ol>
-<li>导入文档<br>为了能在HTML中声明imports，增加了一个新的link类型：<figure class="highlight"><pre><div class="line">&lt;link <span class="variable">rel=</span><span class="string">"import"</span> <span class="variable">href=</span><span class="string">"xxx/xxx.html"</span>&gt;</div></pre></figure>
-
-</li>
-</ol>
-<p>需要注意的是：</p>
-<ul>
-<li>import关键字给资源指定的默认类型是text/html</li>
-<li>link元素有一个async属性，它是布尔属性。当设置为async时，导入的资源异步加载</li>
-<li>导入内容的获取和应用不会受media属性影响</li>
-</ul>
-<ol>
-<li>访问导入的文档<br>HTML5为HTML Imports提供了新的接口，以访问导入的文档：<figure class="highlight"><pre><div class="line">&lt;link <span class="variable">rel=</span><span class="string">"import"</span> <span class="variable">href=</span><span class="string">"/imports/heart.html"</span>&gt;</div></pre></figure>
-
-</li>
-</ol>
-<p>要想访问这个导入的文件“/imports/heart.html”，可如下操作：</p>
-<figure class="highlight"><pre><div class="line"><span class="built_in">var</span> <span class="keyword">link</span> <span class="subst">=</span> document<span class="built_in">.</span>querySelector(<span class="string">'link[rel=import]'</span>); </div><div class="line"><span class="built_in">var</span> heart <span class="subst">=</span> <span class="keyword">link</span><span class="built_in">.</span><span class="keyword">import</span>; </div><div class="line"><span class="comment">// 访问"/imports/heart.html"文档中的DOM</span></div><div class="line"><span class="built_in">var</span> pulse <span class="subst">=</span> heart<span class="built_in">.</span>querySelector(<span class="string">'div.pulse'</span>);</div></pre></figure>
-
-<h3 id="常见问题">常见问题</h3>
-<p>在HTML解析或XML解析的Document上下文中的import被称为“阻塞脚本导入”。如果此元素是Document的解析器创建的，或者这个元素是一个import类型的link，而且此link没有被标记为异步，同时此导入已经完全下载，且事件循环的最后事件已经到达步骤1，且元素在Document中，且用户代理尚未放弃此导入。用户代理可以随时放弃一个导入。</p>
-<h3 id="兼容性">兼容性</h3>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/html-imports/" data-id="ycsp1pf5fo0jw3rv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -677,7 +654,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -690,7 +667,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -702,6 +679,14 @@
       <ul>
         
           <li>
+            <a href="/2015/02/04/WebIDL/">WebIDL</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/27/File-API/">File-API</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
           </li>
         
@@ -711,14 +696,6 @@
         
           <li>
             <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/MathML/">MathML</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/woff/">woff</a>
           </li>
         
       </ul>

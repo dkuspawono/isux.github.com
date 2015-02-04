@@ -65,6 +65,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-channel-messaging" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/14/channel-messaging/" class="article-date">
+  <time datetime="2015-01-14T14:43:21.000Z" itemprop="datePublished">Jan 14 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/14/channel-messaging/">channel-messaging</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>通道通讯（Channel Messaging）提供了在不同浏览器上下文之间通过端口通讯的方式，定义好双方端口后可以通过postMessage方法和onMessage句柄进行通讯。与跨文档通讯（Cross-document Messaging）不同，跨文档通讯需要双方安全的信任级别，但通道通讯通过定义端口方式可以直接让两边通讯。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line"><span class="comment">//开启通道：</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"></div><div class="line"><span class="comment">//MessageChannel对象包括了两个端口port1和port2，一般第一个端口是本地端口，第二个是发送到远程windows或worker的端口。</span></div><div class="line">channel.port1;</div><div class="line">channel.port2;</div><div class="line"></div><div class="line"><span class="comment">//用postMessage通讯：</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"></div><div class="line"><span class="comment">//用onmessage接受事件：</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{<span class="comment">//something }</span></div><div class="line"></div><div class="line"><span class="comment">//你也可以发给Web worker：</span></div><div class="line">worker.postMessage({code:’port’},[channel.port2]);</div><div class="line"></div><div class="line"><span class="comment">//Web worker接收一样用onmessage：</span></div><div class="line">onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{</div><div class="line">     <span class="keyword">if</span> (event.data.code == <span class="string">"port"</span>) {</div><div class="line">     event.ports[<span class="number">0</span>].postMessage(<span class="string">"Port received."</span>);</div><div class="line">   }</div><div class="line">}</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="comment">//定义channel对象</span></div><div class="line"><span class="keyword">var</span> channel = <span class="keyword">new</span> MessageChannel()；</div><div class="line"><span class="comment">//发送一个端口到对面</span></div><div class="line">otherWindow.postMessage(‘hello’,’http:<span class="comment">//www.tq.com’,[channel.port2]);</span></div><div class="line"><span class="comment">//接受对面端口发来的消息</span></div><div class="line">channel.port1.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>{ <span class="comment">// Message is in event.data alert("Message is: " + event.data); }</span></div><div class="line"><span class="comment">//发送消息到对面</span></div><div class="line">channel.port1.postMessage(<span class="string">'hello'</span>);</div></pre></figure><br><a href="http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="channel-messaging"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/14/channel-messaging/" data-id="ey4nqcxvshksxih7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cross-document-messaging" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/14/cross-document-messaging/" class="article-date">
+  <time datetime="2015-01-14T14:43:14.000Z" itemprop="datePublished">Jan 14 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/14/cross-document-messaging/">cross-document-messaging</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途">用途</h3>
+<p>跨文档通信(Cross-document messaging)提供了网页上不同文档之间的通讯能力。以往需要在相同协议、域名、端口下的页面才能用脚本语言通讯，现在的window.postMessage方法则提供了一种安全可靠的方式来控制文档间的通信。</p>
+<h3 id="语法">语法</h3>
+<figure class="highlight"><pre><div class="line">otherWindow.postMessage(message, targetOrigin, [transfer]);</div><div class="line"></div><div class="line">/*</div><div class="line">其中有四个参数：</div><div class="line">otherWindow，发送目标的<span class="built_in">window</span>对象引用，例如同一页面间的两个iframe交互，other <span class="built_in">window</span>就可能是<span class="built_in">window</span>.parent.frames[<span class="number">1</span>]；</div><div class="line">message，要发送的数据；</div><div class="line">targetOrigin，发送数据的来源，一般是域名，如<span class="attribute">http</span>:<span class="regexp">//</span>www.tq.com，注意最后不要加<span class="regexp">/，例如http:/</span><span class="regexp">/www.tq.com/</span>；</div><div class="line">[transfer]，用于通道通讯（Channel Messaging），用于定义端口信息。</div><div class="line">*/</div></pre></figure>
+
+<h3 id="实例">实例</h3>
+<p><figure class="highlight"><pre><div class="line"><span class="comment">//发送端</span></div><div class="line"><span class="keyword">var</span> eleForm = <span class="built_in">document</span>.querySelector(<span class="string">"form"</span>);</div><div class="line">eleForm.onsubmit = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> message = <span class="built_in">document</span>.querySelector(<span class="string">"input[type='text']"</span>).value;</div><div class="line">    <span class="comment">// 这里是关键，发送信息</span></div><div class="line">    <span class="built_in">window</span>.parent.frames[<span class="number">1</span>].postMessage(message, <span class="string">'*'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;   </div><div class="line">}</div><div class="line"><span class="comment">//接收端</span></div><div class="line"><span class="keyword">var</span> eleBox = <span class="built_in">document</span>.querySelector(<span class="string">"#message"</span>);</div><div class="line"><span class="keyword">var</span> messageHandle = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>{</div><div class="line">    eleBox.innerHTML = <span class="string">'接受到的信息是：'</span> + e.data; };</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) {</div><div class="line">    <span class="comment">// 接受信息</span></div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, messageHandle, <span class="literal">false</span>);</div><div class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) {</div><div class="line">    <span class="comment">// 接受信息，兼顾IE8之流</span></div><div class="line">    <span class="built_in">window</span>.attachEvent(<span class="string">'onmessage'</span>, messageHandle);</div><div class="line">}</div></pre></figure><br><a href="http://www.zhangxinxu.com/study/201202/web-messing-cross-document-messaging-two-iframe.html" target="_blank" rel="external">查看DEMO</a>（引用自xinxuzhang同学博客）</p>
+<h3 id="常见问题">常见问题</h3>
+<ul>
+<li>问题1<br>跨文档通讯也支持跨窗体，例如两个子页面间通讯，可是IE8不支持窗口间通讯。</li>
+<li>问题2<br>跨文档通讯（Cross-document Messaging）跟通道通讯（Channel Messaging）同为WEB通信，只是后者支持度娇弱，可以结合一起学习。</li>
+</ul>
+<h3 id="兼容性">兼容性</h3>
+<div class="caniuse" data-feature="x-doc-messaging"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/14/cross-document-messaging/" data-id="nfyh83xxupncfaeg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Web-Workers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/01/14/Web-Workers/" class="article-date">
@@ -583,109 +684,6 @@
 
 
   
-    <article id="post-data-URIs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/09/data-URIs/" class="article-date">
-  <time datetime="2015-01-09T07:12:39.000Z" itemprop="datePublished">Jan 9 2015</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/09/data-URIs/">data-uris</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说明">说明</h2>
-<p>data URIs是由RFC 2397定义, 允许将一个小文件进行编码后嵌入到另外一个文档里.</p>
-<h2 id="语法">语法</h2>
-<p><figure class="highlight"><pre><div class="line">data:[<span class="link_label">&lt;mediatype&gt;</span>][<span class="link_reference">;base64</span>],<span class="xml"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span></div></pre></figure><br>mediatype是一种MIME类型字符串, 例如 “image/jpeg” 代表 JPEG 图像文件.如果省略这个参数, 则默认值为text/plain;charset=US-ASCII</p>
-<blockquote>
-<p>如果数据是文本类型, 你可以直接将文本嵌入在data:后面 (根据文本类型以及编码,使用合适的HTML实体编码或者百分号编码). 如果是二进制数据, 你可以将数据进行base64编码之后再进行嵌入。</p>
-</blockquote>
-<h2 id="示例">示例</h2>
-<p>data:,Hello%2C%20World!<br>简单的text/plain类型数据<br>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D<br>base64编码过的数据<br>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E<br>一个HTML文档源代码 </p>
-<h2 id="常见问题">常见问题</h2>
-<p>长度限制<br>虽然Mozilla支持无限长度的data URIs,但是标准中并没有规定浏览器必须支持无限长度的data URIs.比如,Opera 11限制data URIs的长度最多为65000个字符. </p>
-<p>缺乏错误处理<br>MIME类型错误或者base64编码错误,都会造成data URIs无法被正常解析, 但不会有任何相关错误提示.</p>
-<p>不支持查询字符串<br>一个data URI的数据字段是没有结束标记的,所以尝试在一个data URI后面添加查询字符串会导致,查询字符串也一并被当作数据字段.例如:</p>
-<h2 id="浏览器兼容性">浏览器兼容性</h2>
-<div class="caniuse" data-feature="datauri"></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/09/data-URIs/" data-id="zqt8sgqco1yottzj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vibration" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/29/vibration/" class="article-date">
-  <time datetime="2014-12-29T09:29:48.000Z" itemprop="datePublished">Dec 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Media/">Media</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/29/vibration/">vibration</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="用途">用途</h3>
-<p>手机震动功能，你可以在游戏中交互中提供更好的体验，比如被导弹打中。</p>
-<h3 id="语法">语法</h3>
-<ul>
-<li><p>一次震动<br><figure class="highlight"><pre><div class="line">navigator.vibrate(1000);</div></pre></figure><br>表示只震动一次，持续时间为一秒</p>
-</li>
-<li><p>多次震动<br><figure class="highlight"><pre><div class="line"><span class="tag">navigator</span><span class="class">.vibrate</span>(<span class="attr_selector">[500, 300, 100]</span>);</div></pre></figure><br>其中[ ]里的数值依次表示：震动时间、停止时间、再次震动时间，也就是说此例表示先震动500ms，接着停止了300ms，又再次震动100ms。</p>
-</li>
-</ul>
-<h3 id="实例">实例</h3>
-<p><figure class="highlight"><pre><div class="line"> <span class="keyword">var</span> vibrateInterval;</div><div class="line"></div><div class="line"><span class="comment">// Starts vibration at passed in level</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startVibrate</span><span class="params">(duration)</span> </span>{</div><div class="line">	navigator.vibrate(duration);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Stops vibration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopVibrate</span><span class="params">()</span> </span>{</div><div class="line">	<span class="comment">// Clear interval and stop persistent vibrating </span></div><div class="line">	<span class="keyword">if</span>(vibrateInterval) clearInterval(vibrateInterval);</div><div class="line">	navigator.vibrate(<span class="number">0</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// Start persistent vibration at given duration and interval</span></div><div class="line"><span class="comment">// Assumes a number value is given</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPeristentVibrate</span><span class="params">(duration, interval)</span> </span>{</div><div class="line">	vibrateInterval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		startVibrate(duration);</div><div class="line">	}, interval);</div><div class="line">}</div></pre></figure><br><a href="">查看DEMO</a></p>
-<h3 id="兼容性">兼容性</h3>
-<div class="caniuse" data-feature="vibration"></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/29/vibration/" data-id="0cb35vploaioaea7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
@@ -699,7 +697,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics-and-typography/">Graphics and typography</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-bonus-features/">HTML bonus features</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Performance-optimization-and-analysis/">Performance optimization and analysis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Platform-interaction-events-messaging/">Platform interaction, events, messaging</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Real-time-communication/">Real-time communication</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service-Workers/">Service Workers</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage-and-Files/">Storage and Files</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Components/">Web Components</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -712,7 +710,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -724,6 +722,14 @@
       <ul>
         
           <li>
+            <a href="/2015/02/04/WebIDL/">WebIDL</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/27/File-API/">File-API</a>
+          </li>
+        
+          <li>
             <a href="/2015/01/20/Blob-URLs/">Blob-URLs</a>
           </li>
         
@@ -733,14 +739,6 @@
         
           <li>
             <a href="/2015/01/18/svg-animate/">SVG动画基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/MathML/">MathML</a>
-          </li>
-        
-          <li>
-            <a href="/2015/01/16/woff/">woff</a>
           </li>
         
       </ul>
